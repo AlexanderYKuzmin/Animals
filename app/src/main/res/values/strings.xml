@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Животный мир</string>
+
+    <string name="home">Список</string>
+    <string name="favorite">Любимые</string>
+    <string name="settings">Настройки</string>
+</resources>

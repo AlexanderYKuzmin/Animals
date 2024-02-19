@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Navigation graphs-->
+    <item name="home_nav_graph" type="id"/>
+    <item name="favorite_nav_graph" type="id"/>
+    <item name="settings_nav_graph" type="id"/>
+</resources>

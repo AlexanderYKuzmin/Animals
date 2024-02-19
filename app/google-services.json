@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "510798983722",
+    "firebase_url": "https://animals-8ff1b-default-rtdb.firebaseio.com",
+    "project_id": "animals-8ff1b",
+    "storage_bucket": "animals-8ff1b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:510798983722:android:b02a84f540cbc6c4fd4953",
+        "android_client_info": {
+          "package_name": "com.kuzmin.animals"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-lWnGeNzAPQbx3o-ohr_NogoYzNupQ_Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:510798983722:android:3de3a17bb6af45a6fd4953",
+        "android_client_info": {
+          "package_name": "com.kuzmin.animals.feature.home"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-lWnGeNzAPQbx3o-ohr_NogoYzNupQ_Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

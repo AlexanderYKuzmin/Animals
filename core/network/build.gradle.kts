@@ -45,9 +45,14 @@ dependencies {
     implementation(FireBase.firebase)
 
     implementation(DaggerHilt.hilt)
-    //implementation("com.google.firebase:firebase-auth:22.3.1")
-    //implementation("com.google.firebase:firebase-database:20.3.0")
     kapt(DaggerHilt.hilt_compiler)
+
+    implementation(Retrofit.retrofit)
+    implementation(Retrofit.retrofit_converter_gson)
+
+    implementation("com.googlecode.flickrj-android:flickrj-android:2.1.0")
+
+    implementation ("io.github.microutils:kotlin-logging-jvm:2.0.11")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

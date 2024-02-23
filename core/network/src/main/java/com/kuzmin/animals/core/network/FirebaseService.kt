@@ -3,15 +3,9 @@ package com.kuzmin.animals.core.network
 import android.util.Log
 import com.google.android.gms.tasks.Task
 import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.values
-import com.kuzmin.animals.core.network.model.AnimalDto
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.emptyFlow
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.tasks.asDeferred
 import java.lang.StringBuilder
 import javax.inject.Inject
 
@@ -24,8 +18,29 @@ class FirebaseService @Inject constructor(
         return fireDb.reference.get()
     }
 
-    suspend fun getAllAnimals(): Task<DataSnapshot> {
-        return fireDb.getReference(ANIMALS_REF).get()
+    suspend fun getAllAnimals(): Deferred<DataSnapshot> {
+        Log.d("Db", "FireBase service: getAllAnimals")
+
+        return fireDb.getReference(ANIMALS_REF).get().addOnSuccessListener {
+            Log.d("Db", "FirebaseService DataSnapshot: $it")
+        }.addOnFailureListener {
+            Log.d("Db", "FireBase service: failure, e: $it")
+        }.addOnCanceledListener {
+             Log.d("Db", "FireBase service: canceled")
+         }.addOnCanceledListener {
+             Log.d("Db", "FireBase service: completed")
+         }.asDeferred()
+    }
+
+    suspend fun getFactsByAnimalId(id: Int): Deferred<DataSnapshot> {
+        Log.d("Db", "FireBase service: getFacts")
+        Log.d("Db", "FireBase service: id = $id")
+        Log.d("Db", "FireBase service: id string = ${id.toString()}")
+        return fireDb.getReference(FACTS_REF).child(id.toString()).get().addOnSuccessListener {
+            Log.d("Db", "FirebaseService DataSnapshot get facts: $it")
+        }.addOnFailureListener {
+            Log.d("Db", "FireBase service: failure get facts, e: $it")
+        }.asDeferred()
     }
 
     suspend fun test(): String {

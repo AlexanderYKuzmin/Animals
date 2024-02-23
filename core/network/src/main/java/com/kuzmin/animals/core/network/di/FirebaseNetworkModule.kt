@@ -11,7 +11,7 @@ import dagger.hilt.components.SingletonComponent
 
 @Module
 @InstallIn(SingletonComponent::class)
-class NetworkModule {
+class FirebaseNetworkModule {
     @Provides
     fun provideFireDataBase(): FirebaseDatabase {
         return FireDatabaseContainer.fireDatabase
@@ -21,11 +21,6 @@ class NetworkModule {
     fun provideFirebaseReference(firebaseDatabase: FirebaseDatabase): DatabaseReference {
         return firebaseDatabase.getReference("animals")
     }
-
-    /*@Provides
-    fun provideFirebaseService(dbRef: DatabaseReference): FirebaseService {
-        return FirebaseService(dbRef)
-    }*/
 
     @Provides
     fun provideFirebaseService(fireDb: FirebaseDatabase): FirebaseService {

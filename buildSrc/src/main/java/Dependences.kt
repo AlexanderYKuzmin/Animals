@@ -25,6 +25,8 @@ object Version {
     const val picasso_version = "2.71828"
 
     const val fireBase_version = "32.7.2"
+
+    const val view_pager_2_version = "1.0.0"
 }
 
 object Deps {
@@ -41,6 +43,10 @@ object LifeCycle {
     const val liveData = "androidx.lifecycle:lifecycle-livedata-ktx:${Version.lifecycle_version}"
     const val viewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Version.lifecycle_version}"
     const val service = "androidx.lifecycle:lifecycle-service:2.5.1${Version.lifecycle_version}"
+}
+
+object ViewPager2 {
+    const val view_pager_2 = "androidx.viewpager2:viewpager2:${Version.view_pager_2_version}"
 }
 
 object DaggerHilt {

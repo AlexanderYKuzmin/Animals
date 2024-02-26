@@ -12,20 +12,20 @@
 
         <action
             android:id="@id/action_home_nav_graph_to_animal_fragment"
-            app:destination="@id/animal_fragment"/>
+            app:destination="@id/animal_fragment"
+            app:popUpTo="@id/home_nav_graph"
+            />
 
     </fragment>
     <fragment
         android:id="@id/animal_fragment"
         android:name="com.kuzmin.animals.feature.home.ui.AnimalFragment"
-        tools:layout="@layout/fragment_animal">
+        tools:layout="@layout/fragment_animal"
+        >
 
         <argument
-            android:name="@string/animal_name_en"
-            app:argType="string" />
-        <argument
-            android:name="@string/animal_id"
-            app:argType="integer" />
+            android:name="animal"
+            app:argType="com.kuzmin.animals.feature.home.domain.model.Animal" />
     </fragment>
 
     <fragment

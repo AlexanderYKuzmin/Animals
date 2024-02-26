@@ -2,4 +2,8 @@
 <resources>
     <string name="animal_name_en">name en</string>
     <string name="animal_id">animal id</string>
+    <string name="animal">animal</string>
+
+
+    <string name="path_pattern_sound">%s/%s.mp3</string>
 </resources>

@@ -1,9 +1,12 @@
 package com.kuzmin.animals.core.network
 
+import android.net.Uri
 import android.util.Log
 import com.google.android.gms.tasks.Task
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.tasks.asDeferred
 import java.lang.StringBuilder
@@ -11,28 +14,26 @@ import javax.inject.Inject
 
 
 class FirebaseService @Inject constructor(
-    private val fireDb: FirebaseDatabase
+    private val fireDb: FirebaseDatabase,
+    //private val fireStorage: FirebaseStorage
+    private val storageRef: StorageReference
 ) {
 
-    suspend fun getAll(): Task<DataSnapshot> {
+    fun getAll(): Task<DataSnapshot> {
         return fireDb.reference.get()
     }
 
-    suspend fun getAllAnimals(): Deferred<DataSnapshot> {
+    fun getAllAnimals(): Deferred<DataSnapshot> {
         Log.d("Db", "FireBase service: getAllAnimals")
 
         return fireDb.getReference(ANIMALS_REF).get().addOnSuccessListener {
             Log.d("Db", "FirebaseService DataSnapshot: $it")
         }.addOnFailureListener {
             Log.d("Db", "FireBase service: failure, e: $it")
-        }.addOnCanceledListener {
-             Log.d("Db", "FireBase service: canceled")
-         }.addOnCanceledListener {
-             Log.d("Db", "FireBase service: completed")
-         }.asDeferred()
+        }.asDeferred()
     }
 
-    suspend fun getFactsByAnimalId(id: Int): Deferred<DataSnapshot> {
+    fun getFactsByAnimalId(id: Int): Deferred<DataSnapshot> {
         Log.d("Db", "FireBase service: getFacts")
         Log.d("Db", "FireBase service: id = $id")
         Log.d("Db", "FireBase service: id string = ${id.toString()}")
@@ -42,6 +43,15 @@ class FirebaseService @Inject constructor(
             Log.d("Db", "FireBase service: failure get facts, e: $it")
         }.asDeferred()
     }
+
+    fun getMediaUrlByName(path: String): Deferred<Uri> {
+        return storageRef.child(path).downloadUrl.addOnSuccessListener {
+            // Got the download URL for 'users/me/profile.png'
+        }.addOnFailureListener {
+            // Handle any errors
+        }.asDeferred()
+    }
+
 
     suspend fun test(): String {
         Log.d("Db", "Service test started.")

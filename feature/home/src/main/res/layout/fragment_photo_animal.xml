@@ -13,6 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="8dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintVertical_weight="2"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/tv_fact"
         />
@@ -24,6 +26,7 @@
         android:textSize="24dp"
         android:textStyle="bold"
         android:layout_margin="8dp"
+        app:layout_constraintVertical_weight="1"
         app:layout_constraintTop_toBottomOf="@id/iv_photo"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:text="Медведи учатся летать"

@@ -31,7 +31,6 @@ class DataSnapshotMapper @Inject constructor() {
 
     private fun mapAnimalDtoToAnimal(animalDto: AnimalDto?): Animal? {
         if (animalDto == null) return null
-        Log.d("Db", "Animal Dto: $animalDto")
         with(animalDto) {
             return Animal(
                 id = id,

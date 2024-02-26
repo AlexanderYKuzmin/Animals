@@ -3,7 +3,9 @@ package com.kuzmin.animals.ui
 import android.annotation.SuppressLint
 import android.graphics.Typeface
 import android.os.Bundle
+import android.view.View
 import android.widget.TextView
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
@@ -12,24 +14,28 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
 import com.kuzmin.animals.R
 import com.kuzmin.animals.common.R.*
 import com.kuzmin.animals.common.R.id.favorite_nav_graph
 import com.kuzmin.animals.common.R.id.home_nav_graph
 import com.kuzmin.animals.common.R.id.settings_nav_graph
 import com.kuzmin.animals.databinding.ActivityMainBinding
+import com.kuzmin.animals.feature.home.ui.AnimalFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class MainActivity :
+    AppCompatActivity(),
+    AnimalFragment.AnimalPagerListener
+{
 
     private lateinit var binding: ActivityMainBinding
 
     private val navController: NavController by lazy {
         findNavController(R.id.nav_host_fragment)
     }
+
+    private val viewModel: MainViewModel by viewModels()
 
     @SuppressLint("ResourceType")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,6 +65,8 @@ class MainActivity : AppCompatActivity() {
         val startFragmentBundle = bundleOf()
         navController.setGraph(navController.graph, startFragmentBundle)
 
+        viewModel.observeAppState(this, ::renderUi)
+
     }
 
 
@@ -76,7 +84,19 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun renderUi(appState: AppState) {
+    private fun renderUi(appState: AppState) {
 
+        if (appState.isAnimalPagingActivated) {
+            binding.navView.visibility = View.GONE
+            binding.toolbar.title = appState.chosenAnimal
+        } else {
+            binding.navView.visibility = View.VISIBLE
+            binding.toolbar.title = appState.title
+        }
+        supportActionBar?.setDisplayHomeAsUpEnabled(false)
+    }
+
+    override fun onAnimalPagerActivated(isActive: Boolean, animalName: String?) {
+        viewModel.handleAnimalPagerActivated(isActive, animalName)
     }
 }

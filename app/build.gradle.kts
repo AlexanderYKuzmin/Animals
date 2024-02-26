@@ -44,6 +44,7 @@ android {
 dependencies {
     implementation(project(":common"))
     implementation(project(":dataprovider:remote"))
+    implementation(project(":media"))
 
     implementation(project(":feature:home"))
     implementation(project(":feature:favorite"))
@@ -56,6 +57,7 @@ dependencies {
 
     implementation(platform(FireBase.firebase_platform))
     implementation(FireBase.firebase)
+    implementation(FireBase.firebase_storage)
     implementation(FireBase.firebase_analytics)
 
     implementation(Navigation.nav_fragment)

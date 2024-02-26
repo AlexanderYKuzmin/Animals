@@ -1,5 +1,6 @@
 package com.kuzmin.animals.dataprovider.remote
 
+import android.net.Uri
 import android.util.Log
 import com.kuzmin.animals.core.network.FirebaseService
 import com.kuzmin.animals.dataprovider.remote.mapper.DataSnapshotMapper
@@ -27,6 +28,11 @@ class FirebaseRepositoryImpl @Inject constructor(
         return mapper.mapFactsDataSnapshotToFactsListModel(
             firebaseService.getFactsByAnimalId(id).await()
         )
+    }
+
+    override suspend fun getMediaUrl(path: String): Uri {
+        Log.d("Db", "Repository path to sound: $path")
+        return firebaseService.getMediaUrlByName(path).await()
     }
 
     override suspend fun getDbTest(): String {

@@ -16,28 +16,29 @@ class FlickrService @Inject constructor(
         val flickr = Flickr(API_KEY)
         Log.d("Flickr", "Flickr service: Flickr object: $flickr")
         val searchParameters = SearchParameters().apply {
-            tags = arrayOf( text)
             media = "photos"
-        }
-        searchParameters.apply {
             tags = arrayOf(text)
             tagMode = "all"
+            setText(text)
             setExtras(setOf("url_c", "url_z"))
         }
-
-        val ph = flickr.photosInterface
+        /*val ph = flickr.photosInterface
             .search(searchParameters, 5, 1).forEach{
                 Log.d("Flickr", "Photo sec: ${it.secret}")
                 Log.d("Flickr", "Photo url: ${it.url}")
                 Log.d("Flickr", "Photo large url: ${it.large1600Url}")
-            }
+            }*/
         //Log.d("Flickr", "Photo url: ${ph.originalUrl}")
 
-
-
-
         return flickr.photosInterface
-            .search(searchParameters, 20, 1)
-            .map { it.mediumUrl}
+            .search(searchParameters, 100, 1)
+            .filter {
+                it.title.lowercase().contains(text)
+            }
+            .map {
+                Log.d("Flickr", "Photo description: ${it.description}")
+                Log.d("Flickr", "Photo title: ${it.title}")
+                it.mediumUrl
+            }
     }
 }

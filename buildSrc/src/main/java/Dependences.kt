@@ -90,11 +90,10 @@ object DataBase {
 }
 
 object FireBase {
-    const val firebase_platform = "com.google.firebase:firebase-bom:32.7.2"
-
+    const val firebase_platform = "com.google.firebase:firebase-bom:${Version.fireBase_version}"
     const val firebase = "com.google.firebase:firebase-database"
-
     const val firebase_analytics = "com.google.firebase:firebase-analytics"
+    const val firebase_storage = "com.google.firebase:firebase-storage"
 }
 
 object Picasso {

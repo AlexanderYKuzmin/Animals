@@ -8,7 +8,7 @@ import com.kuzmin.animals.feature.home.domain.model.Animal
 
 class ChildAdapter(
     private val children: List<Animal>,
-    private val onAnimalClickListener: (String, Int) -> Unit
+    private val onAnimalClickListener: (Animal) -> Unit
 ) : RecyclerView.Adapter<ChildAdapter.ChildViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChildViewHolder {
@@ -25,7 +25,7 @@ class ChildAdapter(
         item.tvName.text = child.nameRu
 
         item.cardChild.setOnClickListener {
-            onAnimalClickListener.invoke(child.nameEn, child.id)
+            onAnimalClickListener.invoke(child)
         }
     }
 

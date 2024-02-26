@@ -58,11 +58,12 @@ class HomeFragment : Fragment() {
                         ParentAdapter(
                             parents, {
                                 drawable.start()
-                            }, { name, id ->
+                            }, { animal ->
                                 findNavController().navigate(
                                     com.kuzmin.animals.common.R.id.action_home_nav_graph_to_animal_fragment,
-                                    bundleOf(getString(com.kuzmin.animals.common.R.string.animal_name_en) to name, getString(com.kuzmin.animals.common.R.string.animal_id) to id)
-                                )
+                                    //bundleOf(getString(com.kuzmin.animals.common.R.string.animal_name_en) to name, getString(com.kuzmin.animals.common.R.string.animal_id) to id)
+                                    bundleOf(getString(com.kuzmin.animals.common.R.string.animal) to animal)
+                                    )
                             }
                         )
                 }

@@ -43,6 +43,7 @@ dependencies {
 
     implementation(platform(FireBase.firebase_platform))
     implementation(FireBase.firebase)
+    implementation(FireBase.firebase_storage)
 
     implementation(DaggerHilt.hilt)
     kapt(DaggerHilt.hilt_compiler)

@@ -15,7 +15,7 @@ import com.kuzmin.animals.feature.home.ui.model.ParentItem
 class ParentAdapter(
     val parents: List<ParentItem>,
     val startAnimationListener: () -> Unit,
-    val onAnimalClickListener: (String, Int) -> Unit
+    val onAnimalClickListener: (Animal) -> Unit
     ) : RecyclerView.Adapter<ParentAdapter.ParentViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ParentViewHolder {

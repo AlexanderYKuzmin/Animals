@@ -22,7 +22,7 @@ class ChildAdapter(
     override fun onBindViewHolder(holder: ChildViewHolder, position: Int) {
         val child = children[position]
         val item = holder.binding
-        item.tvName.text = child.nameRu
+        item.tvName.text = child.nameRu.replaceFirstChar { it.uppercase() }
 
         item.cardChild.setOnClickListener {
             onAnimalClickListener.invoke(child)

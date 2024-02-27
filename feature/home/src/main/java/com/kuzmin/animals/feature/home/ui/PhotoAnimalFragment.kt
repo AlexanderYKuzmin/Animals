@@ -17,7 +17,7 @@ class PhotoAnimalFragment : Fragment() {
     private var fact: String? = null
 
     private var _binding: FragmentPhotoAnimalBinding? = null
-    private val binding: FragmentPhotoAnimalBinding  get() = _binding!!
+    private val binding: FragmentPhotoAnimalBinding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,17 +37,15 @@ class PhotoAnimalFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.d("Flickr", "Photo fragment photo url: $photoUrl")
 
         binding.tvFact.text = fact
         Picasso.get().load(photoUrl).into(binding.ivPhoto)
-
     }
 
     companion object {
 
         @JvmStatic
-        fun newInstance(photoUrl: String, fact: String) =
+        fun newInstance(photoUrl: String?, fact: String) =
             PhotoAnimalFragment().apply {
                 arguments = Bundle().apply {
                     putString(PHOTO_URL, photoUrl)

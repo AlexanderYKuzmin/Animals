@@ -1,5 +1,6 @@
 package com.kuzmin.animals.feature.home.ui.adapters
 
+import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,6 +35,7 @@ class ParentAdapter(
             binding.rvChild.setHasFixedSize(true)
             binding.rvChild.layoutManager = LinearLayoutManager(binding.root.context)
 
+            //binding.tvType.typeface = Typeface.createFromAsset(, )
             binding.cardParent.setOnClickListener {
                 val upAnim = AnimationUtils.loadAnimation(binding.root.context, R.anim.up)
                 val downAnim = AnimationUtils.loadAnimation(binding.root.context, R.anim.down)

@@ -35,6 +35,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         val drawable: AnimationDrawable = binding.rootView.background as AnimationDrawable
         with(drawable) {
             setEnterFadeDuration(2000)
@@ -53,7 +54,6 @@ class HomeFragment : Fragment() {
                     Log.d("Db", "Result success!")
                     Log.d("Db", "Animals: ${it.animals}")
                     val parents = homeViewModel.prepareUiData(it.animals)
-                    Log.d("Db", "parents: $parents")
                     binding.rvParent.adapter =
                         ParentAdapter(
                             parents, {

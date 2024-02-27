@@ -13,6 +13,8 @@
         <item name="colorSurface">@color/color_surface</item>
         <item name="colorOnSurface">@color/color_on_surface</item>
 
+        <item name="colorAccent">@color/color_accent</item>
+
         <!-- Status bar color. -->
         <item name="android:statusBarColor">@color/design_default_color_primary_variant</item>
 

@@ -20,7 +20,7 @@ object Version {
     const val datastore_preferences_version = "1.0.0"
     const val datastore_annotations_version = "1.6.0"
 
-    const val room_version = "2.5.2"
+    const val room_version = "2.6.1"
 
     const val picasso_version = "2.71828"
 

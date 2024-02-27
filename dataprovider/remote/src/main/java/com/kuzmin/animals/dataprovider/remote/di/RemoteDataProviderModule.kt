@@ -3,7 +3,7 @@ package com.kuzmin.animals.dataprovider.remote.di
 import com.kuzmin.animals.dataprovider.remote.FirebaseRepositoryImpl
 import com.kuzmin.animals.dataprovider.remote.FlickrRepositoryImpl
 import com.kuzmin.animals.dataprovider.remote.mapper.DataSnapshotMapper
-import com.kuzmin.animals.dataprovider.remote.mapper.DtoToModelMapper
+import com.kuzmin.animals.dataprovider.remote.mapper.PhotoFlickrMapper
 import com.kuzmin.animals.feature.home.api.FirebaseRepository
 import com.kuzmin.animals.feature.home.api.FlickrRepository
 import dagger.Binds
@@ -26,10 +26,11 @@ interface RemoteDataProviderModule {
     fun bindFlickrRepository(flickrRepositoryImpl: FlickrRepositoryImpl): FlickrRepository
 
     companion object {
-        /*@Provides
-        fun provideDtoMapper(): DtoToModelMapper {
-            return DtoToModelMapper()
-        }*/
+        @Provides
+        @Singleton
+        fun providePhotoFlickrMapper(): PhotoFlickrMapper {
+            return PhotoFlickrMapper()
+        }
 
         @Provides
         @Singleton

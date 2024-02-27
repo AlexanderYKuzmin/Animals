@@ -44,6 +44,7 @@ android {
 dependencies {
     implementation(project(":common"))
     implementation(project(":dataprovider:remote"))
+    implementation(project(":dataprovider:local"))
     implementation(project(":media"))
 
     implementation(project(":feature:home"))

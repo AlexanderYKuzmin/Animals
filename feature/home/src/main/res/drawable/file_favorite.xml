@@ -1,0 +1,8 @@
+<vector android:height="65dp" android:viewportHeight="24"
+    android:viewportWidth="24" android:width="65dp" xmlns:android="http://schemas.android.com/apk/res/android">
+    <path
+        android:fillColor="@color/sound_btn_state"
+        android:strokeWidth="1"
+        android:strokeColor="@color/sound_btn_state_stroke"
+        android:pathData="M21,17.89 L17.21,21.7a1,1 0,0 1,-1.42 0L12,17.89a3.45,3.45 0,0 1,4.5 -5.2,3.45 3.45,0 0,1 4.5,5.2ZM17.41,6 L14,2.59A2,2 0,0 0,12.59 2H4A2,2 0,0 0,2 4V19a2,2 0,0 0,2 2h8.27l-1.69,-1.7a5.45,5.45 0,0 1,5.92 -8.88,5.41 5.41,0 0,1 1.5,-0.37V7.41A2,2 0,0 0,17.41 6Z"/>
+</vector>

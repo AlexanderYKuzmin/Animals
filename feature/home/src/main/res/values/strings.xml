@@ -1,10 +1,11 @@
-<resources>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!--Catalog-->
     <string name="beasts">Звери</string>
     <string name="birds">Птицы</string>
     <string name="insects">Насекомые и др.</string>
     <string name="marine_life">Морская жизнь</string>
+
+    <!--Dialog-->
+    <string name="title_dialog">Краткая справка</string>
 </resources>

@@ -35,6 +35,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":common"))
+
     implementation(project(":feature:home"))
     implementation(project(":core:network"))
 
@@ -48,6 +50,9 @@ dependencies {
 
     implementation(FireBase.firebase_platform)
     implementation(FireBase.firebase)
+
+    implementation("com.googlecode.flickrj-android:flickrj-android:2.1.0")
+    implementation ("io.github.microutils:kotlin-logging-jvm:2.0.11")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

@@ -5,6 +5,8 @@
     <item name="favorite_nav_graph" type="id"/>
     <item name="settings_nav_graph" type="id"/>
     <item name="animal_fragment" type="id"/>
+    <item name="photo_single_fragment" type="id"/>
 
     <item name="action_home_nav_graph_to_animal_fragment" type="id"/>
+    <item name="action_favorite_nav_graph_to_photo_single_fragment" type="id"/>
 </resources>

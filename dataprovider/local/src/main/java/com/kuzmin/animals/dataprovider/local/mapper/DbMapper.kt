@@ -1,5 +1,6 @@
 package com.kuzmin.animals.dataprovider.local.mapper
 
+import android.util.Log
 import com.kuzmin.animals.common.extension.toInt
 import com.kuzmin.animals.common.model.AnimalPhoto
 import com.kuzmin.animals.core.database.model.PhotoDb
@@ -14,6 +15,7 @@ class DbMapper @Inject constructor(
                 id = photoId,
                 mediumUrl = medium ?: "",
                 thumbnailUrl = thumbNail ?: "",
+                smallUrl = small ?: "",
                 isFavorite = isFavorite.toInt(),
                 animalNameEn = animalNameEn,
                 description = description ?: "",
@@ -28,6 +30,7 @@ class DbMapper @Inject constructor(
                 photoId = id,
                 medium = mediumUrl,
                 thumbNail = thumbnailUrl,
+                small = smallUrl,
                 animalNameEn = animalNameEn,
                 description = description,
                 title = title
@@ -36,6 +39,7 @@ class DbMapper @Inject constructor(
     }
 
     fun mapPhotoDbListToAnimalPhotoList(photosDb: List<PhotoDb>): List<AnimalPhoto> {
+        Log.d("Db", "Mapper: PhotoDbs to Animals")
         if (photosDb.isEmpty()) return emptyList()
         return photosDb.map { mapPhotoDbToAnimalPhoto(it) }
     }

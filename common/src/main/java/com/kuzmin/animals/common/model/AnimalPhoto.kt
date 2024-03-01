@@ -11,5 +11,7 @@ data class AnimalPhoto(
 
     val medium: String?,
 
+    val small: String?,
+
     val animalNameEn: String
 )

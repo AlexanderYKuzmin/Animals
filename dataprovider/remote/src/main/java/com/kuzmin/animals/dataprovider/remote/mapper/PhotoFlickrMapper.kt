@@ -25,7 +25,8 @@ class PhotoFlickrMapper @Inject constructor(
                 description = description,
                 medium = mediumUrl,
                 thumbNail = thumbnailUrl,
-                animalNameEn = animalName
+                animalNameEn = animalName,
+                small = smallUrl
             )
         }
     }

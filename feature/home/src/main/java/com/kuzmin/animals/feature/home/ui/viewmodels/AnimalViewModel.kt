@@ -15,6 +15,7 @@ import com.kuzmin.animals.feature.home.domain.model.FlickrResult
 import com.kuzmin.animals.feature.home.domain.model.MediaState
 import com.kuzmin.animals.feature.home.domain.usecases.AddExcludeUseCase
 import com.kuzmin.animals.feature.home.domain.usecases.AddFavoriteUseCase
+import com.kuzmin.animals.feature.home.domain.usecases.GetExcludedUseCase
 import com.kuzmin.animals.feature.home.domain.usecases.GetFactsByAnimalIdUseCase
 import com.kuzmin.animals.feature.home.domain.usecases.GetMediaUrlUseCase
 import com.kuzmin.animals.feature.home.domain.usecases.GetPhotoListUseCase
@@ -22,6 +23,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -32,6 +34,7 @@ class AnimalViewModel @Inject constructor(
     private val getMediaUrlUseCase: GetMediaUrlUseCase,
     private val addFavoriteUseCase: AddFavoriteUseCase,
     private val addExcludeUseCase: AddExcludeUseCase,
+    private val getExcludedUseCase: GetExcludedUseCase,
     private val mediaService: MediaService
 ): ViewModel() {
 
@@ -47,7 +50,14 @@ class AnimalViewModel @Inject constructor(
 
     fun getAnimalResources(animal: Animal, pathPattern: String) {
         viewModelScope.launch(Dispatchers.IO + exceptionHandler) {
-            val photosDef = async { getPhotoList(animal.nameEn) }
+
+            val photosDef = async {
+                val blacklist = mutableListOf<String>()
+                launch {
+                    blacklist.addAll(getExcludedUseCase.getExcludedIdsByName(animal.nameEn))
+                }.join()
+                getPhotoList(animal.nameEn, blacklist)
+            }
             val factsDef = async { getFactsById(animal.id) }
             val mediaUrlDef = async { getMediaUrl(animal.type, animal.nameEn, pathPattern) }
 
@@ -60,9 +70,12 @@ class AnimalViewModel @Inject constructor(
         }
     }
 
-    private suspend fun getPhotoList(tag: String): List<AnimalPhoto> {
+    private suspend fun getPhotoList(tag: String, blacklist: List<String>): List<AnimalPhoto> {
         return getPhotoListUseCase(
-            FlickrRequest(listOf(tag))
+            FlickrRequest(
+                listOf(tag),
+                blacklist
+            )
         )
     }
 

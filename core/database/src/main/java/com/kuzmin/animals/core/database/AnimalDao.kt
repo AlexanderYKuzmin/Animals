@@ -36,8 +36,8 @@ interface AnimalDao {
     @Query("SELECT id FROM photos WHERE animal_name_en LIKE :name AND isFavorite = 1")
     suspend fun getFavoriteIdsByName(name: String): List<String>
 
-    @Query("SELECT id FROM photos WHERE animal_name_en LIKE :name AND isFavorite = 1")
-    suspend fun getBlackListIdsByName(name: String): List<String>?
+    @Query("SELECT id FROM photos WHERE animal_name_en LIKE :name AND isFavorite = 0")
+    suspend fun getBlackListIdsByName(name: String): List<String>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addPhoto(photoDb: PhotoDb)

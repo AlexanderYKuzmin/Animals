@@ -13,7 +13,7 @@ class FlickrService @Inject constructor(
     //private val searchParameters: SearchParameters
 ) {
 
-    fun search(tagsReq: List<String>, quantity: Int = PHOTO_QUANTITY): List<Photo> {
+    fun search(tagsReq: List<String>, quantity: Int = PHOTO_QUANTITY, blacklist: List<String>): List<Photo> {
     Log.d("Flickr", "Flickr service: Start search")
         val flickr = Flickr(API_KEY) // set in datastore
         val searchParameters = SearchParameters().apply {
@@ -21,10 +21,15 @@ class FlickrService @Inject constructor(
             tags = tagsReq.toTypedArray()
             tagMode = "all"
             text = tags[0]
-            setExtras(setOf("url_c", "url_z"))
+            setExtras(setOf("url_c", "url_z", "url_t", "url_s"))
         }
 
+        Log.d("Flickr", "Blacklist: ${blacklist.joinToString("::")}")
+
         return flickr.photosInterface.search(searchParameters, quantity, 1)
+            .filter {
+                Log.d("Flickr", "flickr id: ${it.id}, title: ${it.title}")
+                !blacklist.contains(it.id) }
             //.filter { it.title.lowercase().contains(text) }
             /*.map {
                 Log.d("Flickr", "Photo: ${it.thumbnailUrl} ::: ${it.mediumUrl}")

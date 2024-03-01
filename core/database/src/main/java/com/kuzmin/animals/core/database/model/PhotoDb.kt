@@ -24,6 +24,9 @@ data class PhotoDb(
     @ColumnInfo("thumbnail_url")
     val thumbnailUrl: String,
 
+    @ColumnInfo("small_url")
+    val smallUrl: String,
+
     val isFavorite: Int,
 
     @ColumnInfo("animal_name_en")

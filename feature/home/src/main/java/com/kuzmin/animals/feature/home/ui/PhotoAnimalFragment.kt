@@ -1,6 +1,8 @@
 package com.kuzmin.animals.feature.home.ui
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -35,8 +37,15 @@ class PhotoAnimalFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.tvFact.setOnTouchListener { view, _ ->
+            view.parent.requestDisallowInterceptTouchEvent(true)
+            return@setOnTouchListener false
+        }
+        binding.tvFact.movementMethod = ScrollingMovementMethod()
 
         binding.tvFact.text = fact
         Picasso.get().load(photoUrl).into(binding.ivPhoto)

@@ -30,10 +30,24 @@
 
     <fragment
         android:id="@id/favorite_nav_graph"
-        android:name="com.kuzmin.animals.feature.favorite.FavoriteFragment"
+        android:name="com.kuzmin.animals.feature.favorite.ui.FavoriteFragment"
         tools:layout="@layout/fragment_favorite"
         >
 
+        <action
+            android:id="@id/action_favorite_nav_graph_to_photo_single_fragment"
+            app:destination="@id/photo_single_fragment"
+            app:popUpTo="@layout/fragment_favorite"
+            />
+    </fragment>
+    <fragment
+        android:id="@id/photo_single_fragment"
+        android:name="com.kuzmin.animals.feature.favorite.ui.FavoriteSinglePhotoFragment"
+        tools:layout="@layout/fragment_favorite_single_photo"
+        >
+        <argument
+            android:name="url"
+            app:argType="string"/>
     </fragment>
 
     <fragment

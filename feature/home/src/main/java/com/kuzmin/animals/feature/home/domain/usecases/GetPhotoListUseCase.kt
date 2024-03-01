@@ -7,5 +7,6 @@ import javax.inject.Inject
 class GetPhotoListUseCase @Inject constructor(
     private val flickrRepository: FlickrRepository
 ) {
-    suspend operator fun invoke(request: FlickrRequest) = flickrRepository.searchPhotos(request)
+    suspend operator fun invoke(request: FlickrRequest) =
+        flickrRepository.searchPhotos(request)
 }

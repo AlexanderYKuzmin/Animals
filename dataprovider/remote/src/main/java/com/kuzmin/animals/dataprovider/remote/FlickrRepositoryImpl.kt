@@ -17,7 +17,7 @@ class FlickrRepositoryImpl @Inject constructor(
 
         return photoFlickrMapper.mapPhotoFlickrListToAnimalPhotoList(
             request,
-            flickrService.search(request.tags, request.quantity)
+            flickrService.search(request.tags, request.quantity, request.blacklist)
         )
     }
 }

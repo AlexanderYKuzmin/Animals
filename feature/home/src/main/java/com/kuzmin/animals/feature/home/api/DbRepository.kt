@@ -6,4 +6,8 @@ interface DbRepository {
     suspend fun addFavorite(animalPhoto: AnimalPhoto)
 
     suspend fun addExclude(animalPhoto: AnimalPhoto)
+
+    suspend fun getAllFavorites(): List<AnimalPhoto>
+
+    suspend fun getExcludedIdsByName(name: String): List<String>
 }

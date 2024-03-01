@@ -10,7 +10,7 @@ import com.kuzmin.animals.core.database.model.PhotoDb
     entities = [
         PhotoDb::class
     ],
-    version = 2
+    version = 4
 )
 abstract class AnimalDatabase : RoomDatabase(){
     companion object {

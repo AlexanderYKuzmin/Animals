@@ -4,11 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.kuzmin.animals.feature.home.databinding.ItemChildBinding
-import com.kuzmin.animals.feature.home.domain.model.Animal
+import com.kuzmin.animals.feature.api.model.Animal
 
 class ChildAdapter(
-    private val children: List<Animal>,
-    private val onAnimalClickListener: (Animal) -> Unit
+    private val children: List<com.kuzmin.animals.feature.api.model.Animal>,
+    private val onAnimalClickListener: (com.kuzmin.animals.feature.api.model.Animal) -> Unit
 ) : RecyclerView.Adapter<ChildAdapter.ChildViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChildViewHolder {

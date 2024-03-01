@@ -37,7 +37,7 @@ android {
 dependencies {
     implementation(project(":common"))
 
-    implementation(project(":feature:home"))
+    implementation(project(":feature:api"))
     implementation(project(":core:network"))
 
     implementation(Deps.core)

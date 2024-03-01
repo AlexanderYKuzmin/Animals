@@ -1,4 +1,4 @@
-package com.kuzmin.animals.feature.home.domain.model
+package com.kuzmin.animals.feature.api.model
 
 data class FlickrRequest(
     val tags: List<String>,

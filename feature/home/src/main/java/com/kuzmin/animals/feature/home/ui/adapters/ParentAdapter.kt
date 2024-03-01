@@ -1,6 +1,5 @@
 package com.kuzmin.animals.feature.home.ui.adapters
 
-import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,14 +8,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.kuzmin.animals.feature.home.R
 import com.kuzmin.animals.feature.home.databinding.ItemParentBinding
-import com.kuzmin.animals.feature.home.domain.model.Animal
-import com.kuzmin.animals.feature.home.domain.model.getNameRu
+import com.kuzmin.animals.feature.api.model.Animal
+import com.kuzmin.animals.feature.api.model.getNameRu
 import com.kuzmin.animals.feature.home.ui.model.ParentItem
 
 class ParentAdapter(
     val parents: List<ParentItem>,
     val startAnimationListener: () -> Unit,
-    val onAnimalClickListener: (Animal) -> Unit
+    val onAnimalClickListener: (com.kuzmin.animals.feature.api.model.Animal) -> Unit
     ) : RecyclerView.Adapter<ParentAdapter.ParentViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ParentViewHolder {
@@ -64,7 +63,7 @@ class ParentAdapter(
             }
         }
 
-        private fun setChildRecyclerView(children: List<Animal>) {
+        private fun setChildRecyclerView(children: List<com.kuzmin.animals.feature.api.model.Animal>) {
             binding.rvChild.visibility = View.VISIBLE
             binding.rvChild.adapter = ChildAdapter(
                 children,

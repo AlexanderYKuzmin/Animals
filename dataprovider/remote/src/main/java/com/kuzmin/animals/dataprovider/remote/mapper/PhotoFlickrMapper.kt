@@ -2,8 +2,8 @@ package com.kuzmin.animals.dataprovider.remote.mapper
 
 import android.util.Log
 import com.googlecode.flickrjandroid.photos.Photo
-import com.kuzmin.animals.common.model.AnimalPhoto
-import com.kuzmin.animals.feature.home.domain.model.FlickrRequest
+import com.kuzmin.animals.feature.api.model.AnimalPhoto
+import com.kuzmin.animals.feature.api.model.FlickrRequest
 import javax.inject.Inject
 
 class PhotoFlickrMapper @Inject constructor(

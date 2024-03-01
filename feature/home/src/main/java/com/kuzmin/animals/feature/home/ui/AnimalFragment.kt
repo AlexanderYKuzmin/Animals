@@ -12,10 +12,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.google.android.material.snackbar.Snackbar
-import com.kuzmin.animals.common.model.AnimalPhoto
+import com.kuzmin.animals.feature.api.model.AnimalPhoto
 import com.kuzmin.animals.feature.home.api.MediaService
 import com.kuzmin.animals.feature.home.databinding.FragmentAnimalBinding
-import com.kuzmin.animals.feature.home.domain.model.Animal
 import com.kuzmin.animals.feature.home.domain.model.FlickrResult.*
 import com.kuzmin.animals.feature.home.domain.model.MediaState
 import com.kuzmin.animals.feature.home.ui.adapters.AnimalPagerAdapter
@@ -31,7 +30,7 @@ class AnimalFragment : Fragment() {
     @ApplicationContext lateinit var appContext: Context
     /*private var animalNameEn: String? = null
     private var animalId: Int? = null*/
-    private var animal: Animal? = null
+    private var animal: com.kuzmin.animals.feature.api.model.Animal? = null
 
     private var animalPagerListener: AnimalPagerListener? = null
 
@@ -52,7 +51,7 @@ class AnimalFragment : Fragment() {
             animal = if (VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
                 it.getParcelable(getString(com.kuzmin.animals.common.R.string.animal))
             } else {
-                it.getParcelable(getString(com.kuzmin.animals.common.R.string.animal), Animal::class.java)
+                it.getParcelable(getString(com.kuzmin.animals.common.R.string.animal), com.kuzmin.animals.feature.api.model.Animal::class.java)
             }
         }
     }

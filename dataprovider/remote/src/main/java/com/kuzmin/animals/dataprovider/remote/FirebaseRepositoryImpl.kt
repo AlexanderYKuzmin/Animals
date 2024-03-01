@@ -4,9 +4,10 @@ import android.net.Uri
 import android.util.Log
 import com.kuzmin.animals.core.network.FirebaseService
 import com.kuzmin.animals.dataprovider.remote.mapper.DataSnapshotMapper
-import com.kuzmin.animals.feature.home.api.FirebaseRepository
-import com.kuzmin.animals.feature.home.domain.model.Animal
-import com.kuzmin.animals.feature.home.domain.model.Fact
+import com.kuzmin.animals.feature.api.api.FirebaseRepository
+import com.kuzmin.animals.feature.api.model.Animal
+import com.kuzmin.animals.feature.api.model.Fact
+
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject

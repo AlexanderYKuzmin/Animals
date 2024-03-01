@@ -4,8 +4,8 @@ import com.kuzmin.animals.dataprovider.remote.FirebaseRepositoryImpl
 import com.kuzmin.animals.dataprovider.remote.FlickrRepositoryImpl
 import com.kuzmin.animals.dataprovider.remote.mapper.DataSnapshotMapper
 import com.kuzmin.animals.dataprovider.remote.mapper.PhotoFlickrMapper
-import com.kuzmin.animals.feature.home.api.FirebaseRepository
-import com.kuzmin.animals.feature.home.api.FlickrRepository
+import com.kuzmin.animals.feature.api.api.FirebaseRepository
+import com.kuzmin.animals.feature.api.api.FlickrRepository
 import dagger.Binds
 import dagger.Module
 import dagger.Provides

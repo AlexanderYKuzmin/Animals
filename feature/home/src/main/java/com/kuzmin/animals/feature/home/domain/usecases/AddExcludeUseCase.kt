@@ -1,7 +1,7 @@
 package com.kuzmin.animals.feature.home.domain.usecases
 
-import com.kuzmin.animals.common.model.AnimalPhoto
-import com.kuzmin.animals.feature.home.api.DbRepository
+import com.kuzmin.animals.feature.api.model.AnimalPhoto
+import com.kuzmin.animals.feature.api.api.DbRepository
 import javax.inject.Inject
 
 class AddExcludeUseCase @Inject constructor(

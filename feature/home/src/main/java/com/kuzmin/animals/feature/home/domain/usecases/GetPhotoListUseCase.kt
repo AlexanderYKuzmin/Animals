@@ -1,7 +1,7 @@
 package com.kuzmin.animals.feature.home.domain.usecases
 
-import com.kuzmin.animals.feature.home.api.FlickrRepository
-import com.kuzmin.animals.feature.home.domain.model.FlickrRequest
+import com.kuzmin.animals.feature.api.api.FlickrRepository
+import com.kuzmin.animals.feature.api.model.FlickrRequest
 import javax.inject.Inject
 
 class GetPhotoListUseCase @Inject constructor(

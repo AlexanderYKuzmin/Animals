@@ -6,11 +6,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.kuzmin.animals.common.model.AnimalPhoto
+import com.kuzmin.animals.feature.api.model.AnimalPhoto
 import com.kuzmin.animals.feature.home.api.MediaService
-import com.kuzmin.animals.feature.home.domain.model.Animal
-import com.kuzmin.animals.feature.home.domain.model.AnimalType
-import com.kuzmin.animals.feature.home.domain.model.FlickrRequest
+import com.kuzmin.animals.feature.api.model.Animal
+import com.kuzmin.animals.feature.api.model.AnimalType
+import com.kuzmin.animals.feature.api.model.FlickrRequest
 import com.kuzmin.animals.feature.home.domain.model.FlickrResult
 import com.kuzmin.animals.feature.home.domain.model.MediaState
 import com.kuzmin.animals.feature.home.domain.usecases.AddExcludeUseCase
@@ -23,7 +23,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

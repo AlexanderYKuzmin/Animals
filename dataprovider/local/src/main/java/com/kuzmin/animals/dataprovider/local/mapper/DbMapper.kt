@@ -2,14 +2,14 @@ package com.kuzmin.animals.dataprovider.local.mapper
 
 import android.util.Log
 import com.kuzmin.animals.common.extension.toInt
-import com.kuzmin.animals.common.model.AnimalPhoto
+import com.kuzmin.animals.feature.api.model.AnimalPhoto
 import com.kuzmin.animals.core.database.model.PhotoDb
 import javax.inject.Inject
 
 class DbMapper @Inject constructor(
 
 ) {
-    fun mapAnimalPhotoToPhotoDb(animalPhoto: AnimalPhoto, isFavorite: Boolean): PhotoDb {
+    fun mapAnimalPhotoToPhotoDb(animalPhoto: com.kuzmin.animals.feature.api.model.AnimalPhoto, isFavorite: Boolean): PhotoDb {
         with(animalPhoto) {
             return PhotoDb(
                 id = photoId,
@@ -24,9 +24,9 @@ class DbMapper @Inject constructor(
         }
     }
 
-    fun mapPhotoDbToAnimalPhoto(photoDb: PhotoDb): AnimalPhoto {
+    fun mapPhotoDbToAnimalPhoto(photoDb: PhotoDb): com.kuzmin.animals.feature.api.model.AnimalPhoto {
         with(photoDb) {
-            return AnimalPhoto(
+            return com.kuzmin.animals.feature.api.model.AnimalPhoto(
                 photoId = id,
                 medium = mediumUrl,
                 thumbNail = thumbnailUrl,
@@ -38,7 +38,7 @@ class DbMapper @Inject constructor(
         }
     }
 
-    fun mapPhotoDbListToAnimalPhotoList(photosDb: List<PhotoDb>): List<AnimalPhoto> {
+    fun mapPhotoDbListToAnimalPhotoList(photosDb: List<PhotoDb>): List<com.kuzmin.animals.feature.api.model.AnimalPhoto> {
         Log.d("Db", "Mapper: PhotoDbs to Animals")
         if (photosDb.isEmpty()) return emptyList()
         return photosDb.map { mapPhotoDbToAnimalPhoto(it) }

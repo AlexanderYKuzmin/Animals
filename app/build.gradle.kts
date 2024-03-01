@@ -50,6 +50,8 @@ dependencies {
     implementation(project(":feature:home"))
     implementation(project(":feature:favorite"))
     implementation(project(":feature:settings"))
+    implementation(project(":feature:api"))
+
 
     implementation(Deps.core)
     implementation(Deps.appCompat)

@@ -1,4 +1,4 @@
-package com.kuzmin.animals.common.model
+package com.kuzmin.animals.feature.api.model
 
 data class AnimalPhoto(
     val photoId: String,

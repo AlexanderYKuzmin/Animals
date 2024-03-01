@@ -1,6 +1,6 @@
-package com.kuzmin.animals.feature.home.domain.model
+package com.kuzmin.animals.feature.api.model
 
-import com.kuzmin.animals.feature.home.domain.model.AnimalType.*
+import com.kuzmin.animals.feature.api.model.AnimalType.*
 
 enum class AnimalType(s: String) {
     BEAST("beast"),

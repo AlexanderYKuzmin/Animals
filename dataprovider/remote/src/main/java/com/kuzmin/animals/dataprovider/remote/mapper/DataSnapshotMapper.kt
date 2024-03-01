@@ -4,9 +4,9 @@ import android.util.Log
 import com.google.firebase.database.DataSnapshot
 import com.kuzmin.animals.dataprovider.remote.model.AnimalDto
 import com.kuzmin.animals.dataprovider.remote.model.FactDto
-import com.kuzmin.animals.feature.home.domain.model.Animal
-import com.kuzmin.animals.feature.home.domain.model.AnimalType
-import com.kuzmin.animals.feature.home.domain.model.Fact
+import com.kuzmin.animals.feature.api.model.Animal
+import com.kuzmin.animals.feature.api.model.AnimalType
+import com.kuzmin.animals.feature.api.model.Fact
 import javax.inject.Inject
 
 class DataSnapshotMapper @Inject constructor() {

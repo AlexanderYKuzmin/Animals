@@ -25,7 +25,7 @@
 
         <argument
             android:name="animal"
-            app:argType="com.kuzmin.animals.feature.home.domain.model.Animal" />
+            app:argType="com.kuzmin.animals.feature.api.model.Animal" />
     </fragment>
 
     <fragment

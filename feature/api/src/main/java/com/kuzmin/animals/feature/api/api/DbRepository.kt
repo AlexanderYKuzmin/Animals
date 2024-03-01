@@ -1,6 +1,6 @@
-package com.kuzmin.animals.feature.home.api
+package com.kuzmin.animals.feature.api.api
 
-import com.kuzmin.animals.common.model.AnimalPhoto
+import com.kuzmin.animals.feature.api.model.AnimalPhoto
 
 interface DbRepository {
     suspend fun addFavorite(animalPhoto: AnimalPhoto)

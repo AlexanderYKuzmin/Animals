@@ -2,8 +2,8 @@ package com.kuzmin.animals.feature.home.ui.adapters
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.kuzmin.animals.common.model.AnimalPhoto
-import com.kuzmin.animals.feature.home.domain.model.Fact
+import com.kuzmin.animals.feature.api.model.AnimalPhoto
+import com.kuzmin.animals.feature.api.model.Fact
 import com.kuzmin.animals.feature.home.ui.AnimalFragment
 import com.kuzmin.animals.feature.home.ui.PhotoAnimalFragment
 
@@ -26,6 +26,4 @@ class AnimalPagerAdapter(
             facts[position % facts.size].fact
         )
     }
-
-
 }

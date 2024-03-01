@@ -9,21 +9,10 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.kuzmin.animals.feature.favorite.R
 import com.kuzmin.animals.feature.favorite.databinding.FragmentFavoriteBinding
-import com.kuzmin.animals.feature.favorite.domain.usecases.FavoritesResult
 import com.kuzmin.animals.feature.favorite.domain.usecases.FavoritesResult.*
 import com.kuzmin.animals.feature.favorite.ui.adapters.FavoritePreviewAdapter
-import com.kuzmin.animals.feature.home.ui.PhotoAnimalFragment
 import dagger.hilt.android.AndroidEntryPoint
-
-/**
- * A simple [Fragment] subclass.
- * Use the [FavoriteFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-private const val ARG_PARAM1 = "param1"
-
 
 @AndroidEntryPoint
 class FavoriteFragment : Fragment() {
@@ -32,14 +21,6 @@ class FavoriteFragment : Fragment() {
     private val binding: FragmentFavoriteBinding get() = _binding!!
 
     private val favoriteViewModel: FavoriteViewModel by viewModels()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        /*arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-
-        }*/
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

@@ -4,13 +4,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.kuzmin.animals.common.model.AnimalPhoto
+import com.kuzmin.animals.feature.api.model.AnimalPhoto
 import com.kuzmin.animals.feature.favorite.databinding.ItemFavoritePrevBinding
 import com.squareup.picasso.Picasso
 import kotlin.math.ceil
 
 class FavoritePreviewAdapter(
-    private val favorites: List<AnimalPhoto>,
+    private val favorites: List<com.kuzmin.animals.feature.api.model.AnimalPhoto>,
     private val imageClickListener: (String) -> Unit
 ) : RecyclerView.Adapter<FavoritePreviewAdapter.FavoriteViewHolder>(){
 

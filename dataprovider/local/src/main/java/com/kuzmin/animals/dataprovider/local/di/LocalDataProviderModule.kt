@@ -2,7 +2,7 @@ package com.kuzmin.animals.dataprovider.local.di
 
 import com.kuzmin.animals.dataprovider.local.DbRepositoryImpl
 import com.kuzmin.animals.dataprovider.local.mapper.DbMapper
-import com.kuzmin.animals.feature.home.api.DbRepository
+import com.kuzmin.animals.feature.api.api.DbRepository
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -14,7 +14,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 interface LocalDataProviderModule {
     @Binds
-    fun bindDbRepository(dbRepositoryImpl: DbRepositoryImpl): DbRepository
+    fun bindDbRepository(dbRepositoryImpl: DbRepositoryImpl): com.kuzmin.animals.feature.api.api.DbRepository
 
     companion object {
         @Provides

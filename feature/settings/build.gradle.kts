@@ -1,6 +1,8 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -30,10 +32,14 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
     implementation(project(":feature:api"))
+    implementation(project(":common"))
 
     implementation(Deps.core)
     implementation(Deps.appCompat)
@@ -41,6 +47,14 @@ dependencies {
     implementation(Deps.constraintLayout)
     implementation(Deps.fragment)
     implementation(Deps.activity)
+
+    implementation(Navigation.nav_fragment)
+    implementation(Navigation.nav_ui_ktx)
+
+    implementation(DaggerHilt.hilt)
+    kapt(DaggerHilt.hilt_compiler)
+
+    implementation(ViewPager2.view_pager_2)
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

@@ -4,6 +4,15 @@
     <string name="animal_id">animal id</string>
     <string name="animal">animal</string>
 
-
     <string name="path_pattern_sound">%s/%s.mp3</string>
+
+    <!--Messages-->
+    <string name="favorite_added">Фото сохранено в Избранное</string>
+    <string name="excluded_added">Фото занесено в черный список</string>
+
+    <string name="error_loading_list">Ошибка загрузки списка</string>
+
+    <!--Exceptions-->
+    <string name="no_animal_name">No animal name to search</string>
+    <string name="no_animal_pager_listener_implemented">Activity must implement AnimalPagerListener</string>
 </resources>

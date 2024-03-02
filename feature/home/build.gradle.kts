@@ -49,7 +49,6 @@ dependencies {
     implementation(Deps.activity)
 
     implementation(DaggerHilt.hilt)
-    //implementation("com.google.firebase:firebase-database:20.3.0")
     kapt(DaggerHilt.hilt_compiler)
 
     implementation(platform(FireBase.firebase_platform))

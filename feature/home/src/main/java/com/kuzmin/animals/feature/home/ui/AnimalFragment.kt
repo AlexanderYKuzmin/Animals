@@ -11,8 +11,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import com.google.android.material.snackbar.Snackbar
+import com.kuzmin.animals.common.R.*
+import com.kuzmin.animals.common.extension.showShortMessage
+import com.kuzmin.animals.feature.api.model.Animal
 import com.kuzmin.animals.feature.api.model.AnimalPhoto
+import com.kuzmin.animals.feature.home.R
 import com.kuzmin.animals.feature.home.api.MediaService
 import com.kuzmin.animals.feature.home.databinding.FragmentAnimalBinding
 import com.kuzmin.animals.feature.home.domain.model.FlickrResult.*
@@ -28,9 +31,8 @@ class AnimalFragment : Fragment() {
 
     @Inject
     @ApplicationContext lateinit var appContext: Context
-    /*private var animalNameEn: String? = null
-    private var animalId: Int? = null*/
-    private var animal: com.kuzmin.animals.feature.api.model.Animal? = null
+
+    private var animal: Animal? = null
 
     private var animalPagerListener: AnimalPagerListener? = null
 
@@ -46,12 +48,11 @@ class AnimalFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            /*animalNameEn = it.getString(getString(com.kuzmin.animals.common.R.string.animal_name_en))
-            animalId = it.getInt(getString(com.kuzmin.animals.common.R.string.animal_id))*/
+
             animal = if (VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
-                it.getParcelable(getString(com.kuzmin.animals.common.R.string.animal))
+                it.getParcelable(getString(string.animal))
             } else {
-                it.getParcelable(getString(com.kuzmin.animals.common.R.string.animal), com.kuzmin.animals.feature.api.model.Animal::class.java)
+                it.getParcelable(getString(string.animal), Animal::class.java)
             }
         }
     }
@@ -66,13 +67,12 @@ class AnimalFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        requireActivity().title = animal?.nameRu
 
         animalPagerListener?.onAnimalPagerActivated(true, animal?.nameRu?.uppercase())
 
-        if (animal == null) throw RuntimeException("No animal name to search")
+        if (animal == null) throw RuntimeException(getString(string.no_animal_name))
 
-        animalViewModel.getAnimalResources(animal!!, getString(com.kuzmin.animals.common.R.string.path_pattern_sound))
+        animalViewModel.getAnimalResources(animal!!, getString(string.path_pattern_sound))
 
         animalViewModel.photos.observe(viewLifecycleOwner) {
             when(it) {
@@ -85,7 +85,10 @@ class AnimalFragment : Fragment() {
                     setOnClickListenerFavoriteBtn(binding.fabFavorite, it.photos)
                     setOnClickListenerExcludeBtn(binding.fabExclude, it.photos)
                 }
-                is Error -> { Log.d("Flickr", "ERROR: ${it.throwable}")}
+                is Error -> {
+                    Log.d("Flickr", "ERROR: ${it.throwable}")
+                    appContext.showShortMessage(getString(string.error_loading_list))
+                }
             }
         }
 
@@ -101,13 +104,12 @@ class AnimalFragment : Fragment() {
         if (context is AnimalPagerListener) {
             animalPagerListener = context
         } else {
-            throw RuntimeException("Activity must implement AnimalPagerListener")
+            throw RuntimeException(getString(string.no_animal_pager_listener_implemented))
         }
     }
 
     override fun onPause() {
         super.onPause()
-        Log.d("Media", "STOP PLAYER")
         animalViewModel.handleMedia(command = MediaService.STOP)
         animalPagerListener?.onAnimalPagerActivated(false, null)
     }
@@ -132,14 +134,14 @@ class AnimalFragment : Fragment() {
         btn.setOnClickListener {
             adapter.count
             animalViewModel.saveAnimalAsFavorite(photos[adapter.count])
-            Snackbar.make(binding.root, "Фото сохранено в Избранное", Snackbar.LENGTH_SHORT).show()
+            appContext.showShortMessage(getString(string.favorite_added))
         }
     }
 
     private fun setOnClickListenerExcludeBtn(btn: View, photos: List<AnimalPhoto>) {
         btn.setOnClickListener {
             animalViewModel.saveAnimalAsExcluded(photos[adapter.count])
-            Snackbar.make(binding.root, "Фото занесено в черный список", Snackbar.LENGTH_SHORT).show()
+            appContext.showShortMessage(getString(string.excluded_added))
         }
     }
 

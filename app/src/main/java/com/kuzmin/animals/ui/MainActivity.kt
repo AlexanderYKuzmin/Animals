@@ -66,7 +66,6 @@ class MainActivity :
         navController.setGraph(navController.graph, startFragmentBundle)
 
         viewModel.observeAppState(this, ::renderUi)
-
     }
 
 

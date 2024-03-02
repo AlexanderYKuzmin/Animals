@@ -1,15 +1,15 @@
 package com.kuzmin.animals.dataprovider.local
 
-import android.util.Log
 import com.kuzmin.animals.core.database.AnimalDao
 import com.kuzmin.animals.dataprovider.local.mapper.DbMapper
+import com.kuzmin.animals.feature.api.api.DbRepository
 import com.kuzmin.animals.feature.api.model.AnimalPhoto
 import javax.inject.Inject
 
 class DbRepositoryImpl @Inject constructor(
     private val animalDao: AnimalDao,
     private val mapper: DbMapper
-) : com.kuzmin.animals.feature.api.api.DbRepository {
+) : DbRepository {
     override suspend fun addFavorite(animalPhoto: AnimalPhoto) {
         animalDao.addPhoto(mapper.mapAnimalPhotoToPhotoDb(animalPhoto, true))
     }
@@ -19,7 +19,6 @@ class DbRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getAllFavorites(): List<AnimalPhoto> {
-        Log.d("Db", "Repository: Get all favorites")
         return mapper.mapPhotoDbListToAnimalPhotoList(animalDao.getFavorites())
     }
 

@@ -42,17 +42,17 @@
     </fragment>
     <fragment
         android:id="@id/photo_single_fragment"
-        android:name="com.kuzmin.animals.feature.favorite.ui.FavoriteSinglePhotoFragment"
-        tools:layout="@layout/fragment_favorite_single_photo"
+        android:name="com.kuzmin.animals.feature.favorite.ui.FavoritePagerFragment"
+        tools:layout="@layout/fragment_favorite_pager"
         >
         <argument
-            android:name="url"
-            app:argType="string"/>
+            android:name="medium_url_key"
+            app:argType="string[]" />
     </fragment>
 
     <fragment
         android:id="@id/settings_nav_graph"
-        android:name="com.kuzmin.animals.feature.settings.SettingsFragment"
+        android:name="com.kuzmin.animals.feature.settings.ui.SettingsFragment"
         tools:layout="@layout/fragment_settings" >
     </fragment>
 

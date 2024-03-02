@@ -1,4 +1,17 @@
 <resources>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="category">Категория:</string>
+    <string name="photo_quantity">Количество фото поиска:</string>
+    <string name="additional_keywords">Ключевые слова для поиска:</string>
+
+    <string name="edit_animals">Добавить/удалить животное</string>
+    <string name="et_hint">Ключевое слово (in english)</string>
+
+    <string name="save_btn">Сохранить</string>
+
+    <string-array name="tab_names">
+        <item name="tab_1_name">Поиск</item>
+        <item name="tab_2_name">Животные</item>
+    </string-array>
+
 </resources>

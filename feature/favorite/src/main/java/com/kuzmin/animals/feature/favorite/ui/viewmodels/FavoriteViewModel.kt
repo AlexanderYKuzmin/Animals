@@ -1,4 +1,4 @@
-package com.kuzmin.animals.feature.favorite.ui
+package com.kuzmin.animals.feature.favorite.ui.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

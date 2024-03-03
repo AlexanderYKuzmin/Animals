@@ -7,8 +7,8 @@ import com.kuzmin.animals.feature.home.databinding.ItemChildBinding
 import com.kuzmin.animals.feature.api.model.Animal
 
 class ChildAdapter(
-    private val children: List<com.kuzmin.animals.feature.api.model.Animal>,
-    private val onAnimalClickListener: (com.kuzmin.animals.feature.api.model.Animal) -> Unit
+    private val children: List<Animal>,
+    private val onAnimalClickListener: (Animal) -> Unit
 ) : RecyclerView.Adapter<ChildAdapter.ChildViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChildViewHolder {

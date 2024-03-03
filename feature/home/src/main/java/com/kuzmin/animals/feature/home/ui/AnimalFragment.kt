@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.kuzmin.animals.common.R.*
 import com.kuzmin.animals.common.extension.showShortMessage
+import com.kuzmin.animals.feature.api.api.AnimalPagerListener
 import com.kuzmin.animals.feature.api.model.Animal
 import com.kuzmin.animals.feature.api.model.AnimalPhoto
 import com.kuzmin.animals.feature.home.R
@@ -145,7 +146,7 @@ class AnimalFragment : Fragment() {
         }
     }
 
-    interface AnimalPagerListener {
+    /*interface AnimalPagerListener {
         fun onAnimalPagerActivated(isActive: Boolean, title: String?)
-    }
+    }*/
 }

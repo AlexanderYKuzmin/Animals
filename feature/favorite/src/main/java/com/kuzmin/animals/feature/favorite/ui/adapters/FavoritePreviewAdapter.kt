@@ -13,7 +13,7 @@ import kotlin.math.ceil
 
 class FavoritePreviewAdapter(
     private val favorites: List<AnimalPhoto>,
-    private val imageClickListener: (List<String>) -> Unit
+    private val imageClickListener: (List<String>, String) -> Unit
 ) : RecyclerView.Adapter<FavoritePreviewAdapter.FavoriteViewHolder>(){
 
 
@@ -62,7 +62,8 @@ class FavoritePreviewAdapter(
             imageClickListener.invoke(
                 favorites
                     .filter { it.animalNameEn == favorites[index].animalNameEn }
-                    .map { it.medium ?: "" }
+                    .map { it.medium ?: "" },
+                favorites[index].animalNameRu
             )
         }
     }

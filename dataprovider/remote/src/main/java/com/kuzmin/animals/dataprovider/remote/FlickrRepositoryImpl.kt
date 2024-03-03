@@ -17,8 +17,12 @@ class FlickrRepositoryImpl @Inject constructor(
         Log.d("Flickr", "Flickr Repository: Search photo")
 
         return photoFlickrMapper.mapPhotoFlickrListToAnimalPhotoList(
-            request,
-            flickrService.search(request.tags, request.quantity, request.blacklist)
+            request.animal,
+            flickrService.search(
+                tagsReq = request.tags,
+                animalName = request.animal.nameEn,
+                quantity = request.quantity,
+                blacklist = request.blacklist)
         )
     }
 }

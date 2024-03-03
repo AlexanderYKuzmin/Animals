@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.kuzmin.animals.common.R.*
 import com.kuzmin.animals.feature.home.R
 import com.kuzmin.animals.feature.home.databinding.FragmentHomeBinding
 import com.kuzmin.animals.feature.home.domain.model.Result
@@ -51,8 +52,6 @@ class HomeFragment : Fragment() {
                 }
 
                 is Result.Success -> {
-                    Log.d("Db", "Result success!")
-                    Log.d("Db", "Animals: ${it.animals}")
                     val parents = homeViewModel.prepareUiData(it.animals)
                     binding.rvParent.adapter =
                         ParentAdapter(
@@ -61,8 +60,7 @@ class HomeFragment : Fragment() {
                             }, { animal ->
                                 findNavController().navigate(
                                     com.kuzmin.animals.common.R.id.action_home_nav_graph_to_animal_fragment,
-                                    //bundleOf(getString(com.kuzmin.animals.common.R.string.animal_name_en) to name, getString(com.kuzmin.animals.common.R.string.animal_id) to id)
-                                    bundleOf(getString(com.kuzmin.animals.common.R.string.animal) to animal)
+                                    bundleOf(getString(string.animal) to animal)
                                     )
                             }
                         )

@@ -20,13 +20,13 @@ import com.kuzmin.animals.common.R.id.favorite_nav_graph
 import com.kuzmin.animals.common.R.id.home_nav_graph
 import com.kuzmin.animals.common.R.id.settings_nav_graph
 import com.kuzmin.animals.databinding.ActivityMainBinding
-import com.kuzmin.animals.feature.home.ui.AnimalFragment
+import com.kuzmin.animals.feature.api.api.AnimalPagerListener
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity :
     AppCompatActivity(),
-    AnimalFragment.AnimalPagerListener
+    AnimalPagerListener
 {
 
     private lateinit var binding: ActivityMainBinding
@@ -95,7 +95,7 @@ class MainActivity :
         supportActionBar?.setDisplayHomeAsUpEnabled(false)
     }
 
-    override fun onAnimalPagerActivated(isActive: Boolean, animalName: String?) {
-        viewModel.handleAnimalPagerActivated(isActive, animalName)
+    override fun onAnimalPagerActivated(isActive: Boolean, title: String?) {
+        viewModel.handleAnimalPagerActivated(isActive, title)
     }
 }

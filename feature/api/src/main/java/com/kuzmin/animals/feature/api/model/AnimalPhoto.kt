@@ -13,5 +13,7 @@ data class AnimalPhoto(
 
     val small: String?,
 
-    val animalNameEn: String
+    val animalNameEn: String,
+
+    val animalNameRu: String
 )

@@ -42,6 +42,9 @@ dependencies {
     implementation(Deps.appCompat)
     implementation(Deps.material)
 
+    implementation(DataStore.datastore_preferences)
+    implementation(DataStore.datastore_annotations)
+
     implementation(DaggerHilt.hilt)
     kapt(DaggerHilt.hilt_compiler)
 

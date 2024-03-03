@@ -9,7 +9,7 @@ import javax.inject.Inject
 class DbMapper @Inject constructor(
 
 ) {
-    fun mapAnimalPhotoToPhotoDb(animalPhoto: com.kuzmin.animals.feature.api.model.AnimalPhoto, isFavorite: Boolean): PhotoDb {
+    fun mapAnimalPhotoToPhotoDb(animalPhoto: AnimalPhoto, isFavorite: Boolean): PhotoDb {
         with(animalPhoto) {
             return PhotoDb(
                 id = photoId,
@@ -18,27 +18,29 @@ class DbMapper @Inject constructor(
                 smallUrl = small ?: "",
                 isFavorite = isFavorite.toInt(),
                 animalNameEn = animalNameEn,
+                animalNameRu = animalNameRu,
                 description = description ?: "",
                 title = title ?: ""
             )
         }
     }
 
-    fun mapPhotoDbToAnimalPhoto(photoDb: PhotoDb): com.kuzmin.animals.feature.api.model.AnimalPhoto {
+    fun mapPhotoDbToAnimalPhoto(photoDb: PhotoDb): AnimalPhoto {
         with(photoDb) {
-            return com.kuzmin.animals.feature.api.model.AnimalPhoto(
+            return AnimalPhoto(
                 photoId = id,
                 medium = mediumUrl,
                 thumbNail = thumbnailUrl,
                 small = smallUrl,
                 animalNameEn = animalNameEn,
+                animalNameRu = animalNameRu,
                 description = description,
                 title = title
             )
         }
     }
 
-    fun mapPhotoDbListToAnimalPhotoList(photosDb: List<PhotoDb>): List<com.kuzmin.animals.feature.api.model.AnimalPhoto> {
+    fun mapPhotoDbListToAnimalPhotoList(photosDb: List<PhotoDb>): List<AnimalPhoto> {
         Log.d("Db", "Mapper: PhotoDbs to Animals")
         if (photosDb.isEmpty()) return emptyList()
         return photosDb.map { mapPhotoDbToAnimalPhoto(it) }

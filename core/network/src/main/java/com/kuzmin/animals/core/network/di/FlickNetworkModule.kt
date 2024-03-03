@@ -36,15 +36,17 @@ class FlickNetworkModule {
             .build().create(FlickApiService::class.java)
     }
 
-    /*@Provides
+    @Provides
     fun provideFlickr(): Flickr {
         return Flickr(API_KEY)
-    }*/
+    }
 
-    /*@Provides
+    @Provides
     fun provideSearchParams(): SearchParameters {
         return SearchParameters().apply {
             media = "photos"
+            tagMode = "all"
+            setExtras(setOf("url_c", "url_z", "url_t", "url_s"))
         }
-    }*/
+    }
 }

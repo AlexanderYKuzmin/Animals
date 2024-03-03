@@ -10,4 +10,6 @@ interface DbRepository {
     suspend fun getAllFavorites(): List<AnimalPhoto>
 
     suspend fun getExcludedIdsByName(name: String): List<String>
+
+    suspend fun getTagsByAnimalType(type: String): List<String>
 }

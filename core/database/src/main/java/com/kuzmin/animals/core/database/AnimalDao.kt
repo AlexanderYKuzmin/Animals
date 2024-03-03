@@ -44,4 +44,7 @@ interface AnimalDao {
 
     @Query("DELETE FROM photos WHERE id = :id")
     suspend fun deletePhoto(id: String): Int
+
+    @Query("SELECT name_en FROM tags WHERE animal_type LIKE :type")
+    suspend fun getTagsByAnimalType(type: String): List<String>
 }

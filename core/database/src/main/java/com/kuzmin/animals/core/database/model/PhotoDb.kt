@@ -32,6 +32,9 @@ data class PhotoDb(
     @ColumnInfo("animal_name_en")
     val animalNameEn: String,
 
+    @ColumnInfo("animal_name_ru")
+    val animalNameRu: String,
+
     val description: String,
 
     val title: String

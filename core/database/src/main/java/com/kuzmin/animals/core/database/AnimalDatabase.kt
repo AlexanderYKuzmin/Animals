@@ -5,12 +5,14 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.kuzmin.animals.core.database.model.PhotoDb
+import com.kuzmin.animals.core.database.model.TagDb
 
 @Database(
     entities = [
-        PhotoDb::class
+        PhotoDb::class,
+        TagDb::class
     ],
-    version = 4
+    version = 5
 )
 abstract class AnimalDatabase : RoomDatabase(){
     companion object {

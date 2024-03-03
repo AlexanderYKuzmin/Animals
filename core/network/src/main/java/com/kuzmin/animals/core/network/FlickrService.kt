@@ -6,22 +6,20 @@ import com.googlecode.flickrjandroid.photos.Photo
 import com.googlecode.flickrjandroid.photos.SearchParameters
 import javax.inject.Inject
 
-private const val API_KEY = "cd278152e8d3e7e92270d7ddb0d41721"
-
 class FlickrService @Inject constructor(
-    //private val flickr: Flickr,
-    //private val searchParameters: SearchParameters
+    private val flickr: Flickr,
+    private val searchParameters: SearchParameters
 ) {
 
-    fun search(tagsReq: List<String>, quantity: Int = PHOTO_QUANTITY, blacklist: List<String>): List<Photo> {
-    Log.d("Flickr", "Flickr service: Start search")
-        val flickr = Flickr(API_KEY) // set in datastore
-        val searchParameters = SearchParameters().apply {
-            media = "photos"
-            tags = tagsReq.toTypedArray()
-            tagMode = "all"
-            text = tags[0]
-            setExtras(setOf("url_c", "url_z", "url_t", "url_s"))
+    fun search(
+        tagsReq: List<String>,
+        animalName: String,
+        quantity: Int = PHOTO_QUANTITY,
+        blacklist: List<String>
+    ): List<Photo> {
+        searchParameters.apply {
+            text = animalName
+            tags = mutableListOf(animalName).apply { addAll(tagsReq) }.toTypedArray()
         }
 
         Log.d("Flickr", "Blacklist: ${blacklist.joinToString("::")}")
@@ -30,10 +28,6 @@ class FlickrService @Inject constructor(
             .filter {
                 Log.d("Flickr", "flickr id: ${it.id}, title: ${it.title}")
                 !blacklist.contains(it.id) }
-            //.filter { it.title.lowercase().contains(text) }
-            /*.map {
-                Log.d("Flickr", "Photo: ${it.thumbnailUrl} ::: ${it.mediumUrl}")
-                it.mediumUrl }*/
     }
 
     companion object {

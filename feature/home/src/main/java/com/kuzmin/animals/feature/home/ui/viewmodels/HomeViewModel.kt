@@ -50,45 +50,6 @@ class HomeViewModel @Inject constructor(
         animalsByTypes.entries.forEach {(k, v) ->
             parents.add( parentFactory.createParentItem(k, v))
         }
-
-        /*for ((k, v) in animalsByTypes) {
-            //val children = v.map { ChildItem(it.nameRu) }
-            parents.add( parentFactory.createParentItem(k, v))
-                *//*with(parentFactory) {
-                    when(k) {
-                        BEAST -> { createParentItem(k, v)}
-                        BIRD -> {
-                            ParentItem(
-                                image = R.drawable.crow_2,
-                                title = k,
-                                children = v
-                            )
-                        }
-                        INSECT -> {
-                            ParentItem(
-                                image = R.drawable.bug_4,
-                                title = k,
-                                children = v
-                            )
-                        }
-                        MARINE_LIFE -> {
-                            ParentItem(
-                                image = R.drawable.fish_4,
-                                title = k,
-                                children = v
-                            )
-                        }
-
-                        else -> {
-                            ParentItem(
-                                image = R.drawable.bug_4,
-                                title = k,
-                                children = v
-                            )
-                        }
-                    }
-                }*//*
-        }*/
         return parents
     }
 }

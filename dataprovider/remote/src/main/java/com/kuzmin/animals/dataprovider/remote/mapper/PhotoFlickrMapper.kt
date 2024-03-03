@@ -2,6 +2,7 @@ package com.kuzmin.animals.dataprovider.remote.mapper
 
 import android.util.Log
 import com.googlecode.flickrjandroid.photos.Photo
+import com.kuzmin.animals.feature.api.model.Animal
 import com.kuzmin.animals.feature.api.model.AnimalPhoto
 import com.kuzmin.animals.feature.api.model.FlickrRequest
 import javax.inject.Inject
@@ -9,15 +10,15 @@ import javax.inject.Inject
 class PhotoFlickrMapper @Inject constructor(
 
 ){
-    fun mapPhotoFlickrListToAnimalPhotoList(request: FlickrRequest, photosFlickr: List<Photo>): List<AnimalPhoto> {
+    fun mapPhotoFlickrListToAnimalPhotoList(animal: Animal, photosFlickr: List<Photo>): List<AnimalPhoto> {
         Log.d("Flickr", "mapper PHOTOS: ${photosFlickr.joinToString(",")}")
         if (photosFlickr.isEmpty()) return emptyList()
         return photosFlickr.map {
-            mapPhotoFlickrToAnimalPhoto(it, request.tags[0])
+            mapPhotoFlickrToAnimalPhoto(it, animal)
         }
     }
 
-    private fun mapPhotoFlickrToAnimalPhoto(photoFlickr: Photo, animalName: String): AnimalPhoto {
+    private fun mapPhotoFlickrToAnimalPhoto(photoFlickr: Photo, animal: Animal): AnimalPhoto {
         with(photoFlickr) {
             return AnimalPhoto(
                 photoId = id,
@@ -25,7 +26,8 @@ class PhotoFlickrMapper @Inject constructor(
                 description = description,
                 medium = mediumUrl,
                 thumbNail = thumbnailUrl,
-                animalNameEn = animalName,
+                animalNameEn = animal.nameEn,
+                animalNameRu = animal.nameRu,
                 small = smallUrl
             )
         }

@@ -25,4 +25,8 @@ class DbRepositoryImpl @Inject constructor(
     override suspend fun getExcludedIdsByName(name: String): List<String> {
         return animalDao.getBlackListIdsByName(name)
     }
+
+    override suspend fun getTagsByAnimalType(type: String): List<String> {
+        return animalDao.getTagsByAnimalType(type)
+    }
 }

@@ -19,6 +19,8 @@ import com.kuzmin.animals.feature.home.domain.usecases.GetExcludedUseCase
 import com.kuzmin.animals.feature.home.domain.usecases.GetFactsByAnimalIdUseCase
 import com.kuzmin.animals.feature.home.domain.usecases.GetMediaUrlUseCase
 import com.kuzmin.animals.feature.home.domain.usecases.GetPhotoListUseCase
+import com.kuzmin.animals.feature.home.domain.usecases.GetSearchQuantityUseCase
+import com.kuzmin.animals.feature.home.domain.usecases.GetTagsByAnimalTypeUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
@@ -34,8 +36,10 @@ class AnimalViewModel @Inject constructor(
     private val addFavoriteUseCase: AddFavoriteUseCase,
     private val addExcludeUseCase: AddExcludeUseCase,
     private val getExcludedUseCase: GetExcludedUseCase,
+    private val getTagsByAnimalTypeUse: GetTagsByAnimalTypeUseCase,
+    private val getSearchQuantityUseCase: GetSearchQuantityUseCase,
     private val mediaService: MediaService
-): ViewModel() {
+) : ViewModel() {
 
     private val _photos = MutableLiveData<FlickrResult>()
     val photos: LiveData<FlickrResult> get() = _photos
@@ -51,30 +55,39 @@ class AnimalViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO + exceptionHandler) {
 
             val photosDef = async {
-                val blacklist = mutableListOf<String>()
-                launch {
-                    blacklist.addAll(getExcludedUseCase.getExcludedIdsByName(animal.nameEn))
-                }.join()
-                getPhotoList(animal.nameEn, blacklist)
+
+                val blacklistDef = async {
+                    getExcludedUseCase(animal.nameEn)
+                }
+                val tagListDef = async {
+                    getTagsByAnimalTypeUse(animal.type.name.lowercase())
+                }
+                val searchQuantityDef = async { getSearchQuantityUseCase() }
+
+                getPhotoList(animal, tagListDef.await(), blacklistDef.await(), searchQuantityDef.await())
             }
             val factsDef = async { getFactsById(animal.id) }
             val mediaUrlDef = async { getMediaUrl(animal.type, animal.nameEn, pathPattern) }
 
-            _photos.postValue(FlickrResult.Success(
-                animal.info,
-                photosDef.await(),
-                factsDef.await(),
-                mediaUrlDef.await()
-            ))
+            _photos.postValue(
+                FlickrResult.Success(
+                    animal.info,
+                    photosDef.await(),
+                    factsDef.await(),
+                    mediaUrlDef.await()
+                )
+            )
         }
     }
 
-    private suspend fun getPhotoList(tag: String, blacklist: List<String>): List<AnimalPhoto> {
+    private suspend fun getPhotoList(
+        animal: Animal,
+        tags: List<String>,
+        blacklist: List<String>,
+        searchQuantity: Int
+    ): List<AnimalPhoto> {
         return getPhotoListUseCase(
-            FlickrRequest(
-                listOf(tag),
-                blacklist
-            )
+            FlickrRequest(animal, tags, blacklist, searchQuantity)
         )
     }
 
@@ -90,10 +103,11 @@ class AnimalViewModel @Inject constructor(
 
     fun handleMedia(mediaUri: Uri = Uri.EMPTY, command: String) {
         viewModelScope.launch {
-            when(command) {
+            when (command) {
                 MediaService.PLAY -> mediaService.play(mediaUri) {
                     _mediaPlayerState.postValue(MediaState.Completed)
                 }
+
                 MediaService.STOP -> mediaService.stop()
             }
         }

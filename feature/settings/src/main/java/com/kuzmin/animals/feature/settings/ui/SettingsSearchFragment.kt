@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.kuzmin.animals.feature.api.model.AnimalType
+import com.kuzmin.animals.feature.api.model.getNameRu
 import com.kuzmin.animals.feature.settings.R
 import com.kuzmin.animals.feature.settings.databinding.FragmentSettingsSearchBinding
 import com.kuzmin.animals.feature.settings.ui.viewmodels.SettingsSearchViewModel
@@ -42,7 +43,7 @@ class SettingsSearchFragment : Fragment() {
     }
 
     private fun setSpinner() {
-        val categories = AnimalType.entries.map { it.name }
+        val categories = AnimalType.entries.filter { it != AnimalType.NO_TYPE }.map { it.getNameRu() }
         val adapter = context?.let {
             ArrayAdapter(it, R.layout.spinner_item, categories).apply {
                 setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)

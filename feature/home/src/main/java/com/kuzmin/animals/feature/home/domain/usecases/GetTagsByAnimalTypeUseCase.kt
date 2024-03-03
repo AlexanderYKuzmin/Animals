@@ -3,8 +3,8 @@ package com.kuzmin.animals.feature.home.domain.usecases
 import com.kuzmin.animals.feature.api.api.DbRepository
 import javax.inject.Inject
 
-class GetExcludedUseCase @Inject constructor(
+class GetTagsByAnimalTypeUseCase @Inject constructor(
     private val dbRepository: DbRepository
-){
-    suspend operator fun invoke(name: String) = dbRepository.getExcludedIdsByName(name)
+) {
+    suspend operator fun invoke(type: String) = dbRepository.getTagsByAnimalType(type)
 }

@@ -44,11 +44,14 @@ class FavoriteFragment : Fragment() {
                     //TODO progressbar
                 }
                 is Success -> {
-                    val adapter = FavoritePreviewAdapter(it.favoriteList) { list ->
+                    val adapter = FavoritePreviewAdapter(it.favoriteList) { list, title ->
                         Log.d("Favorites", "on Image clicked!")
                         findNavController().navigate(
                             R.id.action_favorite_nav_graph_to_photo_single_fragment,
-                            bundleOf(FavoritePagerFragment.URL_KEY to list.toTypedArray())
+                            bundleOf(
+                                FavoritePagerFragment.URL_KEY to list.toTypedArray(),
+                                FavoritePagerFragment.TITLE_KEY to title
+                            )
                         )
                     }
                     binding.rvFavorites.adapter = adapter

@@ -30,7 +30,7 @@ data class PhotoDb(
     val isFavorite: Int,
 
     @ColumnInfo("animal_name_en")
-    val animalNameEn: String,
+    var animalNameEn: String,
 
     @ColumnInfo("animal_name_ru")
     val animalNameRu: String,

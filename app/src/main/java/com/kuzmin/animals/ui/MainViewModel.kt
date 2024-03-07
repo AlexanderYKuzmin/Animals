@@ -3,7 +3,7 @@ package com.kuzmin.animals.ui
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.kuzmin.animals.common.firebase_resource.AppConstants
+import com.kuzmin.animals.common.AppConstants
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

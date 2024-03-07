@@ -11,7 +11,6 @@ class PhotoFlickrMapper @Inject constructor(
 
 ){
     fun mapPhotoFlickrListToAnimalPhotoList(animal: Animal, photosFlickr: List<Photo>): List<AnimalPhoto> {
-        Log.d("Flickr", "mapper PHOTOS: ${photosFlickr.joinToString(",")}")
         if (photosFlickr.isEmpty()) return emptyList()
         return photosFlickr.map {
             mapPhotoFlickrToAnimalPhoto(it, animal)

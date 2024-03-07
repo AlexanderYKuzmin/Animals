@@ -21,6 +21,6 @@ class DatabaseModule {
     @Singleton
     @Provides
     fun provideDao(animalDatabase: AnimalDatabase): AnimalDao {
-        return animalDatabase.tmDao()
+        return animalDatabase.animalDao()
     }
 }

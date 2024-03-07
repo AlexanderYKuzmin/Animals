@@ -48,6 +48,12 @@
         <argument
             android:name="medium_url_key"
             app:argType="string[]" />
+        <argument
+            android:name="title_key"
+            app:argType="string" />
+        <argument
+            android:name="index_key"
+            app:argType="integer"/>
     </fragment>
 
     <fragment

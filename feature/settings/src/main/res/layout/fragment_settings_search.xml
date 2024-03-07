@@ -42,7 +42,6 @@
         android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
         android:background="@drawable/et_bgd"
         android:padding="8dp"
         android:textSize="20dp"

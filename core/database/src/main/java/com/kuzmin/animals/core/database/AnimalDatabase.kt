@@ -12,7 +12,7 @@ import com.kuzmin.animals.core.database.model.TagDb
         PhotoDb::class,
         TagDb::class
     ],
-    version = 5
+    version = 6
 )
 abstract class AnimalDatabase : RoomDatabase(){
     companion object {
@@ -38,5 +38,5 @@ abstract class AnimalDatabase : RoomDatabase(){
         }
     }
 
-    abstract fun tmDao(): AnimalDao
+    abstract fun animalDao(): AnimalDao
 }

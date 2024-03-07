@@ -14,8 +14,6 @@ class FlickrRepositoryImpl @Inject constructor(
     private val photoFlickrMapper: PhotoFlickrMapper
 ) : FlickrRepository {
     override suspend fun searchPhotos(request: FlickrRequest): List<AnimalPhoto> {
-        Log.d("Flickr", "Flickr Repository: Search photo")
-
         return photoFlickrMapper.mapPhotoFlickrListToAnimalPhotoList(
             request.animal,
             flickrService.search(

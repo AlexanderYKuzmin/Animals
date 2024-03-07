@@ -1,6 +1,7 @@
 package com.kuzmin.animals.dataprovider.remote.mapper
 
 import android.util.Log
+import androidx.annotation.VisibleForTesting
 import com.google.firebase.database.DataSnapshot
 import com.kuzmin.animals.dataprovider.remote.model.AnimalDto
 import com.kuzmin.animals.dataprovider.remote.model.FactDto
@@ -12,11 +13,9 @@ import javax.inject.Inject
 class DataSnapshotMapper @Inject constructor() {
 
     fun mapDataSnapshotAnimalsToAnimalsListModel(snapshot: DataSnapshot): List<Animal> {
-        Log.d("Db", "Mapper Snapshot: $snapshot")
-
         return snapshot.children.mapNotNull {
             mapAnimalDtoToAnimal(it.getValue(AnimalDto::class.java))
-        }.toList()
+        }
     }
 
     fun mapAnimalsDtoToAnimals(animalsDto: List<AnimalDto>): List<Animal> {
@@ -26,7 +25,7 @@ class DataSnapshotMapper @Inject constructor() {
     fun mapFactsDataSnapshotToFactsListModel(snapshot: DataSnapshot): List<Fact> {
         return snapshot.children.mapNotNull {
             mapFactDtoToFact(it.getValue(FactDto::class.java))
-        }.toList()
+        }
     }
 
     private fun mapAnimalDtoToAnimal(animalDto: AnimalDto?): Animal? {

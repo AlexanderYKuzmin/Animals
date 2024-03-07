@@ -14,4 +14,6 @@
         <item name="tab_2_name">Животные</item>
     </string-array>
 
+    <!--Messages-->
+    <string name="tags_added_ok">Ключевые слова успешно добавлены</string>
 </resources>

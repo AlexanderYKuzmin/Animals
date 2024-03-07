@@ -51,11 +51,15 @@ dependencies {
     implementation(Retrofit.retrofit)
     implementation(Retrofit.retrofit_converter_gson)
 
-    implementation("com.googlecode.flickrj-android:flickrj-android:2.1.0")
+    implementation(Flickr.flickrj_android)
 
     implementation ("io.github.microutils:kotlin-logging-jvm:2.0.11")
 
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    testImplementation(Test.junit4)
+    testImplementation (Test.mockito)
+    testImplementation(Test.mockito_inline)
+    androidTestImplementation (DaggerHilt.hilt_android_testing)
+    kaptAndroidTest (DaggerHilt.hilt_android_compiling)
+    androidTestImplementation(AndroidTest.extJunit4)
+    androidTestImplementation(AndroidTest.espresso)
 }

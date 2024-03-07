@@ -18,26 +18,18 @@ class FirebaseRepositoryImpl @Inject constructor(
 ) : FirebaseRepository {
 
     override suspend fun getAllAnimals(): List<Animal> {
-        Log.d("Db", "Repository getAllAnimals")
         return mapper.mapDataSnapshotAnimalsToAnimalsListModel(
             firebaseService.getAllAnimals().await()
         )
     }
 
     override suspend fun getFactsByAnimalId(id: Int): List<Fact> {
-        Log.d("Db", "Repository getFacts id: $id")
         return mapper.mapFactsDataSnapshotToFactsListModel(
             firebaseService.getFactsByAnimalId(id).await()
         )
     }
 
     override suspend fun getMediaUrl(path: String): Uri {
-        Log.d("Db", "Repository path to sound: $path")
         return firebaseService.getMediaUrlByName(path).await()
-    }
-
-    override suspend fun getDbTest(): String {
-        Log.d("Db", "Repository: service getDbTest")
-        return firebaseService.test()
     }
 }

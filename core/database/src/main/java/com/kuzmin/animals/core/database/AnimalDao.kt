@@ -5,6 +5,8 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.kuzmin.animals.core.database.model.PhotoDb
+import com.kuzmin.animals.core.database.model.TagDb
+import java.util.Objects
 
 @Dao
 interface AnimalDao {
@@ -47,4 +49,7 @@ interface AnimalDao {
 
     @Query("SELECT name_en FROM tags WHERE animal_type LIKE :type")
     suspend fun getTagsByAnimalType(type: String): List<String>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun addTags(tags: List<TagDb>)
 }

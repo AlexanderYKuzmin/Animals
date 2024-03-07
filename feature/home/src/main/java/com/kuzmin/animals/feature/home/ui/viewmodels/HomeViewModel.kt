@@ -1,17 +1,13 @@
 package com.kuzmin.animals.feature.home.ui.viewmodels
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.kuzmin.animals.feature.home.R
 import com.kuzmin.animals.feature.api.model.Animal
 import com.kuzmin.animals.feature.api.model.AnimalType
-import com.kuzmin.animals.feature.api.model.AnimalType.*
 import com.kuzmin.animals.feature.home.domain.model.Result
 import com.kuzmin.animals.feature.home.domain.usecases.GetAllAnimalsUseCase
-import com.kuzmin.animals.feature.home.domain.usecases.GetDbTestUseCase
 import com.kuzmin.animals.feature.home.ui.model.ParentItem
 import com.kuzmin.animals.feature.home.ui.model.ParentItemFactory
 import dagger.hilt.android.lifecycle.HiltViewModel

@@ -5,9 +5,11 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(
-    tableName = "tags",
-    primaryKeys = ["name_en", "animal_type"])
+    tableName = "tags"
+)
 data class TagDb(
+    @PrimaryKey(false)
+    val id: String,
 
     @ColumnInfo("name_en")
     val nameEn: String,

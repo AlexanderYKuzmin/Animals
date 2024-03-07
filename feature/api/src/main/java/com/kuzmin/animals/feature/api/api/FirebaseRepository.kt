@@ -9,6 +9,4 @@ interface FirebaseRepository {
     suspend fun getFactsByAnimalId(id: Int): List<com.kuzmin.animals.feature.api.model.Fact>
 
     suspend fun getMediaUrl(path: String): Uri
-
-    suspend fun getDbTest(): String
 }

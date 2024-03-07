@@ -4,6 +4,7 @@ import com.kuzmin.animals.core.database.AnimalDao
 import com.kuzmin.animals.dataprovider.local.mapper.DbMapper
 import com.kuzmin.animals.feature.api.api.DbRepository
 import com.kuzmin.animals.feature.api.model.AnimalPhoto
+import com.kuzmin.animals.feature.api.model.AnimalType
 import javax.inject.Inject
 
 class DbRepositoryImpl @Inject constructor(
@@ -28,5 +29,9 @@ class DbRepositoryImpl @Inject constructor(
 
     override suspend fun getTagsByAnimalType(type: String): List<String> {
         return animalDao.getTagsByAnimalType(type)
+    }
+
+    override suspend fun addTags(type: AnimalType, tags: List<String>) {
+        animalDao.addTags(mapper.mapTypeAndTagsToTagsDb(type, tags))
     }
 }

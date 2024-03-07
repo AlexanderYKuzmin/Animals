@@ -26,7 +26,20 @@ object Version {
 
     const val fireBase_version = "32.7.2"
 
+    const val flickrj_version = "2.1.0"
+
     const val view_pager_2_version = "1.0.0"
+
+    const val junit4_version = "4.13.2"
+
+    const val ext_junit_version = "1.1.5"
+
+    const val espresso_core_version = "3.5.1"
+
+    const val coroutine_test_version = "1.6.1"
+
+    const val mockito_version = "4.0.0"
+    const val mockito_inline_version = "3.11.2"
 }
 
 object Deps {
@@ -52,6 +65,8 @@ object ViewPager2 {
 object DaggerHilt {
     const val hilt = "com.google.dagger:hilt-android:${Version.hilt_version}"
     const val hilt_compiler = "com.google.dagger:hilt-compiler:${Version.hilt_version}"
+    const val hilt_android_testing = "com.google.dagger:hilt-android-testing:${Version.hilt_version}"
+    const val hilt_android_compiling = "com.google.dagger:hilt-android-compiler:${Version.hilt_version}"
 }
 
 object Navigation {
@@ -96,6 +111,23 @@ object FireBase {
     const val firebase_storage = "com.google.firebase:firebase-storage"
 }
 
+object Flickr {
+    const val flickrj_android = "com.googlecode.flickrj-android:flickrj-android:${Version.flickrj_version}"
+}
+
 object Picasso {
     const val picasso = "com.squareup.picasso:picasso:${Version.picasso_version}"
+}
+
+object Test {
+    const val junit4 = "junit:junit:${Version.junit4_version}"
+    const val mockito = "org.mockito.kotlin:mockito-kotlin:${Version.mockito_version}"
+    const val mockito_inline = "org.mockito:mockito-inline:${Version.mockito_inline_version}"
+    const val coroutine_test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Version.coroutine_test_version}"
+}
+
+object AndroidTest {
+    const val extJunit4 = "androidx.test.ext:junit:${Version.ext_junit_version}"
+    const val espresso = "androidx.test.espresso:espresso-core:${Version.espresso_core_version}"
+    const val coroutine_test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Version.coroutine_test_version}"
 }

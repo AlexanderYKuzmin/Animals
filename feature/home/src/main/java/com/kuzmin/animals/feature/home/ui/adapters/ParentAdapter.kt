@@ -15,7 +15,7 @@ import com.kuzmin.animals.feature.home.ui.model.ParentItem
 class ParentAdapter(
     val parents: List<ParentItem>,
     val startAnimationListener: () -> Unit,
-    val onAnimalClickListener: (com.kuzmin.animals.feature.api.model.Animal) -> Unit
+    val onAnimalClickListener: (Animal) -> Unit
     ) : RecyclerView.Adapter<ParentAdapter.ParentViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ParentViewHolder {
@@ -34,7 +34,6 @@ class ParentAdapter(
             binding.rvChild.setHasFixedSize(true)
             binding.rvChild.layoutManager = LinearLayoutManager(binding.root.context)
 
-            //binding.tvType.typeface = Typeface.createFromAsset(, )
             binding.cardParent.setOnClickListener {
                 val upAnim = AnimationUtils.loadAnimation(binding.root.context, R.anim.up)
                 val downAnim = AnimationUtils.loadAnimation(binding.root.context, R.anim.down)
@@ -63,31 +62,9 @@ class ParentAdapter(
             }
         }
 
-        private fun setChildRecyclerView(children: List<com.kuzmin.animals.feature.api.model.Animal>) {
+        private fun setChildRecyclerView(children: List<Animal>) {
             binding.rvChild.visibility = View.VISIBLE
-            binding.rvChild.adapter = ChildAdapter(
-                children,
-                onAnimalClickListener
-                )
+            binding.rvChild.adapter = ChildAdapter(children, onAnimalClickListener)
         }
-       /* private fun isAnyItemOpened(position: Int) {
-
-            if (position != RecyclerView.NO_POSITION){
-
-                //var itemPosOpened : Int? = null
-                val temp = parents.indexOfFirst { it.isOpen }
-
-                if (temp != -1 && temp != position) {
-
-                    if (parents[temp].isOpen){
-                        parents[temp].isOpen = false
-                    }
-
-                    notifyItemChanged(temp, itemPosOpened)
-                }
-            }
-
-
-        }*/
     }
 }

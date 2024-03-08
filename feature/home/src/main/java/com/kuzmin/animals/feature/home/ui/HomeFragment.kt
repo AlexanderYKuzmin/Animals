@@ -11,6 +11,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.kuzmin.animals.common.R.*
+import com.kuzmin.animals.common.R.id.action_home_nav_graph_to_animal_fragment
 import com.kuzmin.animals.feature.home.R
 import com.kuzmin.animals.feature.home.databinding.FragmentHomeBinding
 import com.kuzmin.animals.feature.home.domain.model.Result
@@ -38,19 +39,14 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val drawable: AnimationDrawable = binding.rootView.background as AnimationDrawable
-        with(drawable) {
-            setEnterFadeDuration(2000)
-            setExitFadeDuration(2000)
-        }
+        setUpAnimation(drawable)
 
-        //homeViewModel.getDbTest()
         homeViewModel.getAllAnimals()
         homeViewModel.animalsByTypes.observe(viewLifecycleOwner) {
             when (it) {
                 is Result.Loading -> {
                     //TODO progress bar
                 }
-
                 is Result.Success -> {
                     val parents = homeViewModel.prepareUiData(it.animals)
                     binding.rvParent.adapter =
@@ -59,19 +55,25 @@ class HomeFragment : Fragment() {
                                 drawable.start()
                             }, { animal ->
                                 findNavController().navigate(
-                                    com.kuzmin.animals.common.R.id.action_home_nav_graph_to_animal_fragment,
-                                    bundleOf(getString(string.animal) to animal)
+                                        action_home_nav_graph_to_animal_fragment,
+                                        bundleOf(getString(string.animal) to animal)
                                     )
                             }
                         )
                 }
-
                 is Result.Error -> {
                     Log.e("Db", "ERROR: ${it.throwable}")
                 }
 
                 else -> throw RuntimeException("wrong response data from Firedatabase")
             }
+        }
+    }
+
+    private fun setUpAnimation(drawable: AnimationDrawable) {
+        with(drawable) {
+            setEnterFadeDuration(2000)
+            setExitFadeDuration(2000)
         }
     }
 }

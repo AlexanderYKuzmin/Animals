@@ -65,7 +65,13 @@ dependencies {
 
     implementation(Picasso.picasso)
 
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    testImplementation(Test.junit4)
+    testImplementation (Test.mockito)
+    testImplementation(Test.mockito_inline)
+    testImplementation (Test.coroutine_test)
+    testImplementation(Test.arch_core_test)
+    androidTestImplementation (DaggerHilt.hilt_android_testing)
+    kaptAndroidTest (DaggerHilt.hilt_android_compiling)
+    androidTestImplementation(AndroidTest.extJunit4)
+    androidTestImplementation(AndroidTest.espresso)
 }

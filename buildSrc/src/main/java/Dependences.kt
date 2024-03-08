@@ -38,6 +38,8 @@ object Version {
 
     const val coroutine_test_version = "1.6.1"
 
+    const val arch_core_version = "2.2.0"
+
     const val mockito_version = "4.0.0"
     const val mockito_inline_version = "3.11.2"
 }
@@ -124,6 +126,7 @@ object Test {
     const val mockito = "org.mockito.kotlin:mockito-kotlin:${Version.mockito_version}"
     const val mockito_inline = "org.mockito:mockito-inline:${Version.mockito_inline_version}"
     const val coroutine_test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Version.coroutine_test_version}"
+    const val arch_core_test = "androidx.arch.core:core-testing:${Version.arch_core_version}"
 }
 
 object AndroidTest {

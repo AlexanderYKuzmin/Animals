@@ -77,7 +77,7 @@ class AnimalFragment : Fragment() {
 
         animalViewModel.photos.observe(viewLifecycleOwner) {
             when(it) {
-                is Loading -> {}
+                is Loading -> {binding.pbLoadingPhoto.visibility = View.VISIBLE}
                 is Success -> {
                     adapter = AnimalPagerAdapter(this, it.photos, it.facts)
                     binding.viewPagerContainer.adapter = adapter
@@ -85,10 +85,12 @@ class AnimalFragment : Fragment() {
                     setOnClickListenerSoundBtn(binding.fabSound, it.mediaUrl)
                     setOnClickListenerFavoriteBtn(binding.fabFavorite, it.photos)
                     setOnClickListenerExcludeBtn(binding.fabExclude, it.photos)
+                    binding.pbLoadingPhoto.visibility = View.GONE
                 }
                 is Error -> {
                     Log.d("Flickr", "ERROR: ${it.throwable}")
                     appContext.showShortMessage(getString(string.error_loading_list))
+                    binding.pbLoadingPhoto.visibility = View.GONE
                 }
             }
         }

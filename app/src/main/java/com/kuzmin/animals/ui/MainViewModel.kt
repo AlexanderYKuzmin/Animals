@@ -27,7 +27,6 @@ class MainViewModel @Inject constructor(
             title = animalName ?: AppConstants.appName
         )
     }
-
 }
 
 data class AppState(

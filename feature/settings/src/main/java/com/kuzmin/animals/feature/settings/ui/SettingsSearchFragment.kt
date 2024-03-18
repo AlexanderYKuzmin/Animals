@@ -6,7 +6,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.TextView
 import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -88,8 +90,17 @@ class SettingsSearchFragment : Fragment() {
                 setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             }
         }
-
         binding.spType.adapter = adapter
+
+        binding.spType.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(p0: AdapterView<*>?, itemView: View?, p2: Int, p3: Long) {
+                settingsSearchViewModel.handleSelectedType(
+                    (itemView as TextView).text.toString().getEnumByRuName()
+                )
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {}
+        }
     }
 
     private fun setSaveBtnOnClickListener() {
@@ -105,7 +116,6 @@ class SettingsSearchFragment : Fragment() {
                 settingsSearchViewModel.handleSaveSearchData(type, tags, quantity)
             }
         }
-
     }
 
     companion object {

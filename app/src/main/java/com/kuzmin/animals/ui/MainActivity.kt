@@ -44,8 +44,6 @@ class MainActivity :
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //println("MainActivity ${Firebase.database.toString()}")
-
         window.statusBarColor = ContextCompat.getColor(this, color.color_primary_dark)
 
         setupToolbar()

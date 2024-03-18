@@ -18,6 +18,9 @@
         <item name="android:gravity">center_vertical</item>
         <item name="android:fontFamily">@font/eralash</item>
     </style>
-
+    
+    <style name="CircularProgressAnimalTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorAccent">@color/color_gray</item>
+    </style>
 </resources>
 

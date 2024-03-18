@@ -8,13 +8,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.kuzmin.animals.common.R.*
 import com.kuzmin.animals.common.R.id.action_home_nav_graph_to_animal_fragment
+import com.kuzmin.animals.feature.api.model.Animal
+import com.kuzmin.animals.feature.api.model.AnimalType
 import com.kuzmin.animals.feature.home.R
 import com.kuzmin.animals.feature.home.databinding.FragmentHomeBinding
 import com.kuzmin.animals.feature.home.domain.model.Result
+import com.kuzmin.animals.feature.home.domain.model.Result.*
 import com.kuzmin.animals.feature.home.ui.adapters.ParentAdapter
 import com.kuzmin.animals.feature.home.ui.viewmodels.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -31,6 +35,7 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        println("onCreate view")
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -38,16 +43,16 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        Log.d("TEST", "onView created!")
+
         val drawable: AnimationDrawable = binding.rootView.background as AnimationDrawable
         setUpAnimation(drawable)
 
         homeViewModel.getAllAnimals()
         homeViewModel.animalsByTypes.observe(viewLifecycleOwner) {
             when (it) {
-                is Result.Loading -> {
-                    //TODO progress bar
-                }
-                is Result.Success -> {
+                is Loading -> { binding.pbLoading.visibility = View.VISIBLE }
+                is Success -> {
                     val parents = homeViewModel.prepareUiData(it.animals)
                     binding.rvParent.adapter =
                         ParentAdapter(
@@ -60,9 +65,11 @@ class HomeFragment : Fragment() {
                                     )
                             }
                         )
+                    binding.pbLoading.visibility = View.GONE
                 }
-                is Result.Error -> {
+                is Error -> {
                     Log.e("Db", "ERROR: ${it.throwable}")
+                    binding.pbLoading.visibility = View.GONE
                 }
 
                 else -> throw RuntimeException("wrong response data from Firedatabase")

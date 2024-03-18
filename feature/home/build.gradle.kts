@@ -12,7 +12,8 @@ android {
     defaultConfig {
         minSdk = 26
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        //testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.kuzmin.animals.feature.home.CustomTestRunner"
         //consumerProguardFiles("consumer-rules.pro")
     }
 
@@ -26,14 +27,19 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
     buildFeatures {
         viewBinding = true
+    }
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true
+        }
     }
 }
 
@@ -49,6 +55,7 @@ dependencies {
     implementation(Deps.activity)
 
     implementation(DaggerHilt.hilt)
+    implementation(AndroidTest.espresso_idling)
     kapt(DaggerHilt.hilt_compiler)
 
     implementation(platform(FireBase.firebase_platform))
@@ -65,13 +72,29 @@ dependencies {
 
     implementation(Picasso.picasso)
 
+    debugImplementation(Test.fragment_test)
+
     testImplementation(Test.junit4)
-    testImplementation (Test.mockito)
+    testImplementation (Test.mockito_kotlin)
     testImplementation(Test.mockito_inline)
     testImplementation (Test.coroutine_test)
     testImplementation(Test.arch_core_test)
+    testImplementation(DaggerHilt.hilt_android_testing)
+    testImplementation(DaggerHilt.hilt_android_compiling)
+    testImplementation(AndroidTest.espresso_idling)
+
+    androidTestImplementation(Test.arch_core_test)
+    /*androidTestImplementation(Robolectric.robolectric)*/
     androidTestImplementation (DaggerHilt.hilt_android_testing)
     kaptAndroidTest (DaggerHilt.hilt_android_compiling)
+
+    androidTestImplementation(Test.junit4)
     androidTestImplementation(AndroidTest.extJunit4)
     androidTestImplementation(AndroidTest.espresso)
+    androidTestImplementation(AndroidTest.espresso_idling)
+    androidTestImplementation(Test.mockito_kotlin)
+    //androidTestImplementation(Test.mockito_inline)
+    androidTestImplementation ("com.linkedin.dexmaker:dexmaker-mockito-inline:2.28.1")
+    //androidTestImplementation(AndroidTest.mockito_android)
+
 }

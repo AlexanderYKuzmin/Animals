@@ -1,3 +1,4 @@
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -69,7 +70,17 @@ dependencies {
     implementation(DaggerHilt.hilt)
     kapt(DaggerHilt.hilt_compiler)
 
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    debugImplementation(Test.fragment_test)
+
+    androidTestImplementation(Test.arch_core_test)
+    /*androidTestImplementation(Robolectric.robolectric)*/
+    androidTestImplementation (DaggerHilt.hilt_android_testing)
+    kaptAndroidTest (DaggerHilt.hilt_android_compiling)
+    androidTestImplementation(Test.junit4)
+    androidTestImplementation(AndroidTest.extJunit4)
+    androidTestImplementation(AndroidTest.espresso)
+    androidTestImplementation(AndroidTest.espresso_idling)
+    androidTestImplementation(Test.mockito_kotlin)
+    /*androidTestImplementation(Test.mockito_inline)*/
+    androidTestImplementation(AndroidTest.mockito_android)
 }

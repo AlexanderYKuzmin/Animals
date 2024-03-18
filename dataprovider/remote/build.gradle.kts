@@ -56,7 +56,7 @@ dependencies {
     implementation ("io.github.microutils:kotlin-logging-jvm:2.0.11")
 
     testImplementation(Test.junit4)
-    testImplementation (Test.mockito)
+    testImplementation (Test.mockito_kotlin)
     testImplementation(Test.mockito_inline)
     testImplementation (Test.coroutine_test)
     androidTestImplementation (DaggerHilt.hilt_android_testing)

@@ -2,6 +2,7 @@ package com.kuzmin.animals.feature.home.ui.viewmodels
 
 import android.net.Uri
 import android.util.Log
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -13,6 +14,7 @@ import com.kuzmin.animals.feature.api.model.AnimalType
 import com.kuzmin.animals.feature.api.model.FlickrRequest
 import com.kuzmin.animals.feature.home.domain.model.FlickrResult
 import com.kuzmin.animals.feature.home.domain.model.MediaState
+import com.kuzmin.animals.feature.home.domain.model.Result
 import com.kuzmin.animals.feature.home.domain.usecases.AddExcludeUseCase
 import com.kuzmin.animals.feature.home.domain.usecases.AddFavoriteUseCase
 import com.kuzmin.animals.feature.home.domain.usecases.GetExcludedUseCase
@@ -26,7 +28,9 @@ import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import java.util.Optional
 import javax.inject.Inject
+import javax.inject.Named
 
 @HiltViewModel
 class AnimalViewModel @Inject constructor(
@@ -52,8 +56,8 @@ class AnimalViewModel @Inject constructor(
     }
 
     fun getAnimalResources(animal: Animal, pathPattern: String) {
+        _photos.value = FlickrResult.Loading
         viewModelScope.launch(Dispatchers.IO + exceptionHandler) {
-
             val photosDef = async {
 
                 val blacklistDef = async {

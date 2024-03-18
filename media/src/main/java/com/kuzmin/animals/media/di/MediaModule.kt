@@ -17,7 +17,6 @@ import javax.inject.Singleton
 interface MediaModule {
 
     @Binds
-    @Singleton
     fun bindMediaService(mediaServiceImpl: MediaServiceImpl): MediaService
 
     companion object {

@@ -10,10 +10,13 @@
     <string name="save_btn">Сохранить</string>
 
     <string-array name="tab_names">
-        <item name="tab_1_name">Поиск</item>
-        <item name="tab_2_name">Животные</item>
+        <item name="tab_1_name">Настройка поиска</item>
+        <item name="tab_2_name">Настройка списка</item>
     </string-array>
 
     <!--Messages-->
     <string name="tags_added_ok">Ключевые слова успешно добавлены</string>
+
+    <!--Warnings-->
+    <string name="forbidden">Недоступно в данной версии приложения</string>
 </resources>

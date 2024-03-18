@@ -1,8 +1,7 @@
-package com.kuzmin.animals.feature.home
+package com.kuzmin.animals.feature.home.util
 
 import com.kuzmin.animals.feature.api.model.Animal
 import com.kuzmin.animals.feature.api.model.AnimalType
-import com.kuzmin.animals.feature.api.model.getNameRu
 import com.kuzmin.animals.feature.home.ui.model.ParentItem
 
 object TestUtil {

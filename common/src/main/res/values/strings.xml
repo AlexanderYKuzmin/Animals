@@ -8,7 +8,7 @@
 
     <!--Messages-->
     <string name="favorite_added">Фото сохранено в Избранное</string>
-    <string name="excluded_added">Фото занесено в черный список</string>
+    <string name="excluded_added">Фото занесено в Черный список</string>
 
     <string name="error_loading_list">Ошибка загрузки списка</string>
 

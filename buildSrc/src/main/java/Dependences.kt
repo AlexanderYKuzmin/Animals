@@ -5,7 +5,7 @@ object Version {
     const val material_version = "1.11.0"
     const val costraintlayout_version = "2.1.4"
 
-    const val nav_version = "2.7.6"
+    const val nav_version = "2.7.7"
 
     const val retrofit2_version = "2.9.0"
     const val gson_version = "2.9.0"
@@ -35,6 +35,7 @@ object Version {
     const val ext_junit_version = "1.1.5"
 
     const val espresso_core_version = "3.5.1"
+    const val espresso_contrib_version = "3.1.0-alpha3"
 
     const val coroutine_test_version = "1.6.1"
 
@@ -81,6 +82,9 @@ object Navigation {
     const val nav_ui_ktx = "androidx.navigation:navigation-ui-ktx:${Version.nav_version}"
     // Feature module Support
     const val nav_features = "androidx.navigation:navigation-dynamic-features-fragment:${Version.nav_version}"
+
+    const val nav_testing_ktx = "androidx.navigation:navigation-testing-ktx:${Version.nav_version}"
+    const val nav_testing = "androidx.navigation:navigation-testing:${Version.nav_version}"
 }
 
 object Retrofit {
@@ -104,7 +108,7 @@ object DataStore {
 
 object DataBase {
     const val room = "androidx.room:room-runtime:${Version.room_version}"
-    const val room_commmon = "androidx.room:room-common:${Version.room_version}"
+    const val room_common = "androidx.room:room-common:${Version.room_version}"
     const val room_paging = "androidx.room:room-paging:${Version.room_version}"
 
     const val room_kapt_compiler = "androidx.room:room-compiler:${Version.room_version}"
@@ -144,8 +148,8 @@ object AndroidTest {
     const val extJunit4 = "androidx.test.ext:junit:${Version.ext_junit_version}"
     const val espresso = "androidx.test.espresso:espresso-core:${Version.espresso_core_version}"
     const val espresso_idling = "androidx.test.espresso:espresso-idling-resource:${Version.espresso_core_version}"
+    const val espresso_contrib = "androidx.test.espresso:espresso-contrib:${Version.espresso_contrib_version}"
 
     const val mockito_android = "org.mockito:mockito-android:${Version.mockito_core_version}"
-
     const val coroutine_test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Version.coroutine_test_version}"
 }

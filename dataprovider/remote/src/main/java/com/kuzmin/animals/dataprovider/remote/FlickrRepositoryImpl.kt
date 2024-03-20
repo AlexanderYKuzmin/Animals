@@ -1,12 +1,10 @@
 package com.kuzmin.animals.dataprovider.remote
 
-import android.util.Log
-import com.kuzmin.animals.feature.api.model.AnimalPhoto
 import com.kuzmin.animals.core.network.FlickrService
 import com.kuzmin.animals.dataprovider.remote.mapper.PhotoFlickrMapper
 import com.kuzmin.animals.feature.api.api.FlickrRepository
+import com.kuzmin.animals.feature.api.model.AnimalPhoto
 import com.kuzmin.animals.feature.api.model.FlickrRequest
-
 import javax.inject.Inject
 
 class FlickrRepositoryImpl @Inject constructor(

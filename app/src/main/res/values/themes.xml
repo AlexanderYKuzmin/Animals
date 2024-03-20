@@ -16,7 +16,7 @@
         <item name="colorAccent">@color/color_accent</item>
 
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">@color/design_default_color_primary_variant</item>
+        <!--<item name="android:statusBarColor">@color/design_default_color_primary_variant</item>-->
 
         <!--also menu-->
         <item name="android:textColor">@color/color_title</item>

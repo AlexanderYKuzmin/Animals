@@ -1,15 +1,11 @@
 package com.kuzmin.animals.core.network
 
 import android.net.Uri
-import android.util.Log
-import com.google.android.gms.tasks.Task
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.tasks.asDeferred
-import java.lang.StringBuilder
 import javax.inject.Inject
 
 

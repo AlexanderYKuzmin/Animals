@@ -24,10 +24,7 @@ import com.kuzmin.animals.feature.api.api.AnimalPagerListener
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity :
-    AppCompatActivity(),
-    AnimalPagerListener
-{
+class MainActivity : AppCompatActivity(), AnimalPagerListener {
 
     private lateinit var binding: ActivityMainBinding
 
@@ -43,8 +40,6 @@ class MainActivity :
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        window.statusBarColor = ContextCompat.getColor(this, color.color_primary_dark)
 
         setupToolbar()
 
@@ -65,7 +60,6 @@ class MainActivity :
 
         viewModel.observeAppState(this, ::renderUi)
     }
-
 
     private fun setupToolbar() {
         setSupportActionBar(binding.toolbar)

@@ -66,6 +66,7 @@ dependencies {
 
     implementation(Navigation.nav_fragment)
     implementation(Navigation.nav_ui_ktx)
+    //implementation(Navigation.nav_testing)
 
     implementation(DaggerHilt.hilt)
     kapt(DaggerHilt.hilt_compiler)
@@ -81,6 +82,8 @@ dependencies {
     androidTestImplementation(AndroidTest.espresso)
     androidTestImplementation(AndroidTest.espresso_idling)
     androidTestImplementation(Test.mockito_kotlin)
-    /*androidTestImplementation(Test.mockito_inline)*/
     androidTestImplementation(AndroidTest.mockito_android)
+    //androidTestImplementation(Navigation.nav_testing_ktx)
+    androidTestImplementation(Navigation.nav_testing)
+    androidTestImplementation(AndroidTest.espresso_contrib)
 }

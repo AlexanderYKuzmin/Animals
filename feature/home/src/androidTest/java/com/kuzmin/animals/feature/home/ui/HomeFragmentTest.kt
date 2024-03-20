@@ -70,7 +70,6 @@ class HomeFragmentTest {
     fun setUp() {
         MockitoAnnotations.openMocks(this)
         hiltRule.inject()
-
     }
 
     @After

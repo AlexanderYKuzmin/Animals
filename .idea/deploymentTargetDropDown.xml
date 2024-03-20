@@ -2,13 +2,22 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="HomeFragmentTest">
-        <State />
-      </entry>
       <entry key="app">
         <State />
       </entry>
+      <entry key="displayAnimalFragmentWhenAnimalChose()">
+        <State />
+      </entry>
+      <entry key="displayFavoritesWhenNavigationItemPressed()">
+        <State />
+      </entry>
+      <entry key="displaySettingsWhenNavigationItemPressed()">
+        <State />
+      </entry>
       <entry key="feature.home">
+        <State />
+      </entry>
+      <entry key="navigateFromHomeToAnimalsPagerScreen()">
         <State />
       </entry>
       <entry key="prepareParentsByAnimalData()">

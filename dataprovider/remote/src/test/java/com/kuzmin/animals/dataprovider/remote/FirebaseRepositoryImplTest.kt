@@ -4,6 +4,7 @@ import android.net.Uri
 import com.google.firebase.database.DataSnapshot
 import com.kuzmin.animals.core.network.FirebaseService
 import com.kuzmin.animals.dataprovider.remote.mapper.DataSnapshotMapper
+import com.kuzmin.animals.dataprovider.remote.repo.FirebaseRepositoryImpl
 import com.kuzmin.animals.feature.api.api.FirebaseRepository
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.test.runTest

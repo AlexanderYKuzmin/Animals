@@ -2,13 +2,12 @@ package com.kuzmin.animals.dataprovider.remote
 
 import com.kuzmin.animals.core.network.FlickrService
 import com.kuzmin.animals.dataprovider.remote.mapper.PhotoFlickrMapper
+import com.kuzmin.animals.dataprovider.remote.repo.FlickrRepositoryImpl
 import com.kuzmin.animals.dataprovider.remote.util.TestPhotoUtil
 import com.kuzmin.animals.dataprovider.remote.util.TestUtil
 import com.kuzmin.animals.feature.api.api.FlickrRepository
 import com.kuzmin.animals.feature.api.model.FlickrRequest
-import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.runTest
-import org.junit.Assert.*
 
 import org.junit.After
 import org.junit.Before

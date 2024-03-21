@@ -12,6 +12,7 @@ import android.widget.TextView
 import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.kuzmin.animals.common.R.*
 import com.kuzmin.animals.common.extension.hideKeyboard
 import com.kuzmin.animals.common.extension.showShortMessage
 import com.kuzmin.animals.feature.api.model.AnimalType
@@ -60,9 +61,6 @@ class SettingsSearchFragment : Fragment() {
 
         settingsSearchViewModel.searchAnimalSettings.observe(viewLifecycleOwner) {
             when(it) {
-                is Loading -> {
-                //TODO
-                }
                 is Success -> {
                     binding.etPhotoQuantity.setText(it.quantity.toString())
 
@@ -77,6 +75,7 @@ class SettingsSearchFragment : Fragment() {
                     appContext.showShortMessage(getString(R.string.tags_added_ok))
                 }
                 is Error -> {
+                    requireActivity().showShortMessage(getString(string.error_loading_settings))
                     Log.d("Settings", "ERROR: ${it.throwable}")
                 }
             }

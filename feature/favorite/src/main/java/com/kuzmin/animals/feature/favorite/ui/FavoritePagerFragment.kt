@@ -27,15 +27,12 @@ class FavoritePagerFragment : Fragment() {
 
     private var animalPagerListener: AnimalPagerListener? = null
 
-    private val favoritePagerViewModel: FavoritePagerViewModel by viewModels()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             mediumUrls = it.getStringArray(URL_KEY)
             title = it.getString(TITLE_KEY)
             index = it.getInt(INDEX_KEY)
-            Log.d("Favorites", "medium urls $mediumUrls : ${mediumUrls?.size} : $index")
         }
     }
 

@@ -38,6 +38,8 @@ class MainActivity : AppCompatActivity(), AnimalPagerListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        window.statusBarColor = getColor(color.color_primary_dark)
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 

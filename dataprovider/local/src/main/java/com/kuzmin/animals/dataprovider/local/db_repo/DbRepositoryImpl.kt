@@ -1,4 +1,4 @@
-package com.kuzmin.animals.dataprovider.local
+package com.kuzmin.animals.dataprovider.local.db_repo
 
 import com.kuzmin.animals.core.database.AnimalDao
 import com.kuzmin.animals.dataprovider.local.mapper.DbMapper

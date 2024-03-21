@@ -32,7 +32,6 @@ class SettingsSearchViewModel @Inject constructor(
         _searchAnimalSettings.postValue(SettingsResult.Error(throwable))
     }
 
-
     fun handleSelectedType(type: AnimalType) {
         viewModelScope.launch(Dispatchers.IO + exceptionHandler) {
 

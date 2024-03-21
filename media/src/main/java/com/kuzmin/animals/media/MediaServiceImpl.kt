@@ -5,7 +5,6 @@ import android.media.MediaPlayer
 import android.net.Uri
 import com.kuzmin.animals.feature.home.api.MediaService
 import dagger.hilt.android.qualifiers.ApplicationContext
-import java.security.PrivateKey
 import javax.inject.Inject
 
 class MediaServiceImpl @Inject constructor(
@@ -33,8 +32,5 @@ class MediaServiceImpl @Inject constructor(
         }
     }
 
-    override suspend fun pause() {
-        TODO("Not yet implemented")
-    }
-
+    override suspend fun pause() {}
 }

@@ -1,7 +1,5 @@
 package com.kuzmin.animals.feature.api.model
 
-import android.os.Build
-import android.os.Build.VERSION_CODES
 import android.os.Parcel
 import android.os.Parcelable
 
@@ -26,7 +24,6 @@ data class Animal(
         parcel.readString() ?: "No name",
         parcel.readString() ?: "",
         AnimalType.valueOf(parcel.readString()?.uppercase() ?: "NO_TYPE")
-        //arrayListOf<String>().apply { parcel.readStringList(this) }
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -36,7 +33,6 @@ data class Animal(
         parcel.writeString(nameRu)
         parcel.writeString(urlSound)
         parcel.writeString(type.name)
-    //parcel.writeStringList(tags)
     }
 
     override fun describeContents(): Int {

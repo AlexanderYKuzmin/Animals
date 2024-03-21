@@ -1,4 +1,4 @@
-package com.kuzmin.animals.dataprovider.remote
+package com.kuzmin.animals.dataprovider.remote.repo
 
 import android.net.Uri
 import android.util.Log

@@ -1,4 +1,4 @@
-package com.kuzmin.animals.dataprovider.remote
+package com.kuzmin.animals.dataprovider.remote.repo
 
 import com.kuzmin.animals.core.network.FlickrService
 import com.kuzmin.animals.dataprovider.remote.mapper.PhotoFlickrMapper

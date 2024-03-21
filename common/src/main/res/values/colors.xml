@@ -21,7 +21,7 @@
     <color name="white">#FFFFFFFF</color>
 
     <!--settings_bgd-->
-    <color name="color_sky">#64B5F6</color>
+    <!--<color name="color_sky">#64B5F6</color>-->
 
     <!--title color-->
     <color name="color_title">#5C3904</color>

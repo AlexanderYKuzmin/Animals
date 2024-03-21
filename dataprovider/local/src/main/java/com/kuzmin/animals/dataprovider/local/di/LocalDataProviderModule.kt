@@ -1,7 +1,7 @@
 package com.kuzmin.animals.dataprovider.local.di
 
 import android.content.Context
-import com.kuzmin.animals.dataprovider.local.DbRepositoryImpl
+import com.kuzmin.animals.dataprovider.local.db_repo.DbRepositoryImpl
 import com.kuzmin.animals.dataprovider.local.datastore.PrefManagerImpl
 import com.kuzmin.animals.dataprovider.local.mapper.DbMapper
 import com.kuzmin.animals.feature.api.api.DbRepository

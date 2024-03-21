@@ -1,7 +1,7 @@
 package com.kuzmin.animals.dataprovider.remote.di
 
-import com.kuzmin.animals.dataprovider.remote.FirebaseRepositoryImpl
-import com.kuzmin.animals.dataprovider.remote.FlickrRepositoryImpl
+import com.kuzmin.animals.dataprovider.remote.repo.FirebaseRepositoryImpl
+import com.kuzmin.animals.dataprovider.remote.repo.FlickrRepositoryImpl
 import com.kuzmin.animals.dataprovider.remote.mapper.DataSnapshotMapper
 import com.kuzmin.animals.dataprovider.remote.mapper.PhotoFlickrMapper
 import com.kuzmin.animals.feature.api.api.FirebaseRepository

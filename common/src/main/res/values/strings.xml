@@ -11,6 +11,9 @@
     <string name="excluded_added">Фото занесено в Черный список</string>
 
     <string name="error_loading_list">Ошибка загрузки списка</string>
+    <string name="error_loading_image">Ошибка загрузки файла</string>
+    <string name="error_loading_settings">Ошибка загрузки свойств</string>
+
 
     <!--Exceptions-->
     <string name="no_animal_name">No animal name to search</string>

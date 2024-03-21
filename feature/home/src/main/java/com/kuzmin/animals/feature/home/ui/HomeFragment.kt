@@ -13,6 +13,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.kuzmin.animals.common.R.*
 import com.kuzmin.animals.common.R.id.action_home_nav_graph_to_animal_fragment
+import com.kuzmin.animals.common.extension.showShortMessage
 import com.kuzmin.animals.feature.api.model.Animal
 import com.kuzmin.animals.feature.api.model.AnimalType
 import com.kuzmin.animals.feature.home.R
@@ -43,8 +44,6 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        Log.d("TEST", "onView created!")
-
         val drawable: AnimationDrawable = binding.rootView.background as AnimationDrawable
         setUpAnimation(drawable)
 
@@ -68,8 +67,9 @@ class HomeFragment : Fragment() {
                     binding.pbLoading.visibility = View.GONE
                 }
                 is Error -> {
-                    Log.e("Db", "ERROR: ${it.throwable}")
+                    requireActivity().showShortMessage(getString(string.error_loading_image))
                     binding.pbLoading.visibility = View.GONE
+                    Log.e("Db", "ERROR: ${it.throwable}")
                 }
 
                 else -> throw RuntimeException("wrong response data from Firedatabase")
